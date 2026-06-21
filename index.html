@@ -243,6 +243,14 @@ details.gnav > summary::before{content:"▾ ";color:var(--primary-d)}
 .gitem b{color:var(--primary-d);white-space:nowrap}
 .gcl-badge{display:inline-block;font-size:.62rem;font-weight:800;color:var(--muted);background:var(--surface-3);border-radius:6px;padding:1px 5px;vertical-align:1px;white-space:nowrap}
 .gsub{margin:16px 0 2px;font-weight:800;font-size:.82rem;color:var(--primary-d);background:var(--primary-soft);border-radius:8px;padding:6px 11px;display:inline-block}
+details.gacc{border:1px solid var(--border);border-radius:13px;overflow:hidden;background:var(--surface-2);margin-top:10px}
+details.gacc>summary{cursor:pointer;padding:14px 16px;font-weight:800;list-style:none;display:flex;align-items:center;gap:9px}
+details.gacc>summary::-webkit-details-marker{display:none}
+details.gacc>summary::before{content:"\25B8";color:var(--primary-d);font-size:.8em;transition:transform .15s ease;display:inline-block}
+details.gacc[open]>summary::before{transform:rotate(90deg)}
+details.gacc[open]>summary{border-bottom:1px solid var(--border)}
+.gacc-count{margin-inline-start:auto;font-size:.74rem;color:var(--muted);font-weight:800;background:var(--surface-3);border-radius:8px;padding:2px 9px}
+.gacc-body{padding:2px 16px 14px}
 select.search{appearance:none;-webkit-appearance:none;cursor:pointer;background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);background-position:calc(0% + 16px) calc(50% - 2px),calc(0% + 21px) calc(50% - 2px);background-size:5px 5px,5px 5px;background-repeat:no-repeat}
 .gloss-link{color:var(--primary-d);font-weight:700;border-bottom:1px dashed color-mix(in srgb,var(--primary) 55%,transparent);cursor:pointer}
 .gloss-link:hover{background:var(--primary-soft);border-radius:3px}
@@ -8258,38 +8266,38 @@ function renderGlossary(){
     <input class="search" id="gs" placeholder="חיפוש: שם, ראשי תיבות או מונח…" aria-label="חיפוש בגלוסר">
     <select class="search" id="gcl" aria-label="סינון לפי אשכול" style="margin-top:10px"><option value="0">כל האשכולות</option>${clOpts}</select>
     <div class="faint" id="gcount" style="font-size:.8rem;margin-top:8px"></div>
-    <div class="tabbar" id="tabs" role="tablist"></div><div id="gc"></div></section>`));
-  const cats=Object.keys(GLOSSARY); let active=cats[0];
-  const tabs=node.querySelector('#tabs');
-  cats.forEach(cat=>{const t=el(`<button class="tab ${cat===active?'active':''}" role="tab">${esc(cat)}</button>`);
-    t.onclick=()=>{active=cat; clSel.value='0'; [...tabs.children].forEach(x=>x.classList.toggle('active',x.textContent===cat));draw();}; tabs.appendChild(t);});
+    <div id="gc"></div></section>`));
+  const cats=Object.keys(GLOSSARY);
+  const TOTAL=Object.values(GLOSSARY).reduce((a,b)=>a+b.length,0);
   const gc=node.querySelector('#gc'), search=node.querySelector('#gs'), clSel=node.querySelector('#gcl'), cnt=node.querySelector('#gcount');
   const clBadge=(it)=>(it.cl&&it.cl.length)?` <span class="gcl-badge" title="אשכולות רלוונטיים">${it.cl.join('·')}</span>`:'';
+  const itemHTML=(it)=>`<div class="gitem"><b>${esc(it.k)}${clBadge(it)}</b><span>${esc(it.v)}</span></div>`;
+  function bodyHTML(items){
+    if(!items.some(it=>it.sub))return items.map(itemHTML).join('');
+    let h='';
+    [...new Set(items.map(it=>it.sub||' '))].forEach(sub=>{
+      const si=items.filter(it=>(it.sub||' ')===sub);
+      if(!si.length)return;
+      if(sub!==' ')h+=`<div class="gsub">${esc(sub)}</div>`;
+      h+=si.map(itemHTML).join('');
+    });
+    return h;
+  }
   function draw(){
     const term=(search.value||'').trim().toLowerCase();
     const cid=parseInt(clSel.value,10)||0;
     const filtering = !!term || cid>0;
     gc.innerHTML=''; let shown=0;
-    (filtering?cats:[active]).forEach(cat=>{
+    cats.forEach(cat=>{
       const items=GLOSSARY[cat].filter(it=>
         (!term||(it.k+' '+it.v).toLowerCase().includes(term)) &&
         (!cid||(it.cl&&it.cl.includes(cid)))
       );
       if(!items.length)return;
-      const sec=el(`<div class="gcat"><h2>${esc(cat)}</h2></div>`);
-      const addItem=(it)=>{sec.appendChild(el(`<div class="gitem"><b>${esc(it.k)}${clBadge(it)}</b><span>${esc(it.v)}</span></div>`)); shown++;};
-      if(items.some(it=>it.sub)){
-        [...new Set(items.map(it=>it.sub||' '))].forEach(sub=>{
-          const si=items.filter(it=>(it.sub||' ')===sub);
-          if(!si.length)return;
-          if(sub!==' ')sec.appendChild(el(`<div class="gsub">${esc(sub)}</div>`));
-          si.forEach(addItem);
-        });
-      } else { items.forEach(addItem); }
-      gc.appendChild(sec);
+      shown+=items.length;
+      gc.appendChild(el(`<details class="gacc"${filtering?' open':''}><summary>${esc(cat)}<span class="gacc-count">${items.length}</span></summary><div class="gacc-body">${bodyHTML(items)}</div></details>`));
     });
-    cnt.textContent = filtering ? `${shown} מונחים תואמים${cid?' · אשכול '+cid:''}` : `${GLOSSARY[active].length} מונחים בקטגוריה`;
-    [...tabs.children].forEach(x=>x.style.opacity = filtering?'0.45':'');
+    cnt.textContent = filtering ? `${shown} מונחים תואמים${cid?' · אשכול '+cid:''}` : `${cats.length} נושאים · ${TOTAL} מונחים — לחצי על נושא כדי לפתוח`;
     if(!gc.children.length)gc.appendChild(el('<p class="muted" style="text-align:center;padding:20px">🔍 לא נמצאו תוצאות — נסי חיפוש אחר, אשכול אחר, או "כל האשכולות".</p>'));
   }
   search.oninput=draw; clSel.onchange=draw; draw();
