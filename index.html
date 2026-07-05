@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#6d5efc">
+<meta name="theme-color" content="#5a4ff2">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -17,43 +17,60 @@
 <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#f6f7fb; --bg2:#edeef8;
-  --surface:#ffffff; --surface-2:#f7f8fc; --surface-3:#eef1f9;
-  --text:#10132b; --muted:#4b5468; --faint:#6b7280;
-  --primary:#4f46e5; --primary-2:#4338ca; --primary-d:#3730a3; --primary-soft:#eef2ff;
-  --accent:#7c3aed; --accent-soft:#f3e8ff;
-  --border:#dcdfee; --border-2:#e8eaf4;
-  --ok:#16a34a; --ok-bg:#ecfdf5; --bad:#dc2626; --bad-bg:#fef2f2;
-  --warn:#d97706; --warn-bg:#fffbeb; --flag:#7c3aed;
-  --ring-track:#e6e8f4;
-  --grad:linear-gradient(135deg,#6366f1,#7c3aed);
-  --shadow-s:0 1px 2px rgba(30,27,75,.05), 0 1px 3px rgba(30,27,75,.06);
-  --shadow:0 6px 18px rgba(30,27,75,.10);
-  --shadow-l:0 14px 38px rgba(30,27,75,.16);
-  --radius:16px; --radius-s:12px; --focus:#4f46e5;
+  --bg:#f3f4fb; --bg2:#e9ebfa;
+  --surface:#ffffff; --surface-2:#f5f6fd; --surface-3:#ecedfb;
+  --text:#0e1030; --muted:#565d78; --faint:#6c7291;
+  --primary:#5a4ff2; --primary-2:#4a3fdb; --primary-d:#4034c0; --primary-soft:#ecebff;
+  --accent:#9333ea; --accent-soft:#f5ecff;
+  --border:#e5e7f3; --border-2:#eef0f8;
+  --ok:#0ca678; --ok-bg:#e7faf3; --bad:#e5484d; --bad-bg:#fef0f0;
+  --warn:#e08e0b; --warn-bg:#fff7e6; --flag:#9333ea;
+  --ring-track:#e7e8f5;
+  --grad:linear-gradient(135deg,#6a5cf7 0%,#9450f2 100%);
+  --shadow-s:0 1px 2px rgba(24,20,64,.05), 0 2px 5px rgba(24,20,64,.05);
+  --shadow:0 2px 6px rgba(24,20,64,.06), 0 12px 30px rgba(24,20,64,.10);
+  --shadow-l:0 10px 24px rgba(24,20,64,.10), 0 28px 60px rgba(24,20,64,.20);
+  --glow:0 6px 20px rgba(90,79,242,.28);
+  --hair:inset 0 1px 0 rgba(255,255,255,.6);
+  --radius:18px; --radius-s:13px; --radius-l:24px; --focus:#5a4ff2;
+  --ease:cubic-bezier(.22,.72,.24,1);
   --fs:1; /* user font-scale multiplier (A-/A+) */
 }
 html[data-theme="dark"]{
-  --bg:#0f172a; --bg2:#1a202c;
-  --surface:#1e293b; --surface-2:#334155; --surface-3:#475569;
-  --text:#f1f5f9; --muted:#cbd5e1; --faint:#94a3b8;
-  --primary:#6366f1; --primary-2:#4f46e5; --primary-d:#a5b4fc; --primary-soft:#312e81;
-  --accent:#a78bfa; --accent-soft:#2e1065;
-  --border:#3a4358; --border-2:#475069;
-  --ok:#22c55e; --ok-bg:#064e3b; --bad:#ef4444; --bad-bg:#7f1d1d;
-  --warn:#f59e0b; --warn-bg:#451a03; --flag:#c084fc;
-  --ring-track:#3a4358;
-  --grad:linear-gradient(135deg,#6366f1,#8b5cf6);
-  --shadow-s:0 1px 2px rgba(0,0,0,.4); --shadow:0 4px 12px rgba(0,0,0,.5); --shadow-l:0 8px 24px rgba(0,0,0,.6);
-  --focus:#60a5fa;
+  --bg:#0a0e1c; --bg2:#101635;
+  --surface:#151c34; --surface-2:#1e2643; --surface-3:#2a3357;
+  --text:#eef1fc; --muted:#abb3d1; --faint:#7b84a6;
+  --primary:#7d6dff; --primary-2:#6a5cf7; --primary-d:#b4abff; --primary-soft:#282361;
+  --accent:#a855f7; --accent-soft:#2e1065;
+  --border:#2a3357; --border-2:#333d63;
+  --ok:#2dd4a7; --ok-bg:#0a4d3c; --bad:#f2555a; --bad-bg:#5c1a1d;
+  --warn:#f5b041; --warn-bg:#3d2a08; --flag:#c084fc;
+  --ring-track:#2a3357;
+  --grad:linear-gradient(135deg,#7d6dff 0%,#a855f7 100%);
+  --shadow-s:0 1px 2px rgba(0,0,0,.45); --shadow:0 4px 14px rgba(0,0,0,.5), 0 12px 30px rgba(0,0,0,.4); --shadow-l:0 12px 32px rgba(0,0,0,.6);
+  --glow:0 6px 22px rgba(125,109,255,.42);
+  --hair:inset 0 1px 0 rgba(255,255,255,.06);
+  --focus:#8b7dff;
 }
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
 body{
   font-family:'Assistant','Heebo','Segoe UI',system-ui,-apple-system,Arial,'Noto Sans Hebrew',sans-serif;
   color:var(--text); line-height:1.65; font-size:calc(17px * var(--fs)); min-height:100vh;
-  background:linear-gradient(180deg,var(--bg2),var(--bg) 220px);
+  background:
+    radial-gradient(1100px 560px at 100% -12%, rgba(124,92,246,.11), transparent 60%),
+    radial-gradient(950px 500px at -12% 6%, rgba(90,79,242,.09), transparent 55%),
+    linear-gradient(180deg,var(--bg2),var(--bg) 340px);
+  background-attachment:fixed;
   -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  letter-spacing:-.005em;
+}
+html[data-theme="dark"] body{
+  background:
+    radial-gradient(1100px 560px at 100% -12%, rgba(125,109,255,.18), transparent 60%),
+    radial-gradient(950px 520px at -12% 6%, rgba(168,85,247,.13), transparent 55%),
+    linear-gradient(180deg,var(--bg2),var(--bg) 360px);
+  background-attachment:fixed;
 }
 @media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
 
@@ -71,10 +88,10 @@ button,.btn{font-family:inherit;cursor:pointer}
 .icbtn{width:40px;height:40px;border-radius:10px;border:1px solid var(--border);background:var(--surface);
   color:var(--text);display:grid;place-items:center;font-size:1.05rem;transition:.15s}
 .icbtn:hover{background:var(--surface-2)}
-.btn{border:none;border-radius:13px;padding:14px 20px;min-height:52px;font-size:1.04rem;font-weight:600;
-  background:var(--primary);color:#fff;box-shadow:0 2px 8px rgba(30,64,175,.15);
-  transition:background .15s, box-shadow .15s;display:inline-flex;align-items:center;justify-content:center;gap:9px}
-.btn:hover{background:var(--primary-2);box-shadow:0 4px 12px rgba(30,64,175,.25)} .btn:active{opacity:0.95}
+.btn{border:none;border-radius:14px;padding:14px 20px;min-height:52px;font-size:1.04rem;font-weight:700;letter-spacing:-.01em;
+  background:var(--grad);color:#fff;box-shadow:var(--glow);
+  transition:transform .16s var(--ease), box-shadow .16s var(--ease), filter .16s var(--ease);display:inline-flex;align-items:center;justify-content:center;gap:9px}
+.btn:hover{filter:brightness(1.06) saturate(1.04);transform:translateY(-1px);box-shadow:0 10px 26px rgba(90,79,242,.38)} .btn:active{transform:translateY(0);filter:brightness(.98)}
 .btn.secondary{background:var(--surface);color:var(--text);border:1px solid var(--border-2);box-shadow:var(--shadow-s)}
 .btn.secondary:hover{background:var(--surface-2)}
 .btn.ghost{background:transparent;color:var(--primary-d);border:1px solid var(--border-2);box-shadow:none;min-height:44px;padding:10px 16px;font-size:.96rem}
@@ -83,7 +100,7 @@ button,.btn{font-family:inherit;cursor:pointer}
 :focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:10px}
 .btn:focus-visible,.icbtn:focus-visible{outline-offset:3px}
 
-.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow),var(--hair);padding:22px}
 .stack > *{margin-top:14px}
 .stack > *:first-child{margin-top:0}
 h1{font-size:1.42rem;margin:0;letter-spacing:-.01em;font-weight:700} h2{font-size:1.14rem;margin:0 0 2px;font-weight:600}
@@ -91,8 +108,9 @@ h1{font-size:1.42rem;margin:0;letter-spacing:-.01em;font-weight:700} h2{font-siz
 .screen{animation:rise .28s ease both}
 @keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 
-/* hero (clinical: clean card, teal top rule) */
-.hero{border-top:4px solid var(--primary)}
+/* hero (clean card, gradient accent bar) */
+.hero{position:relative}
+.hero::before{content:"";position:absolute;top:0;inset-inline:0;height:4px;background:var(--grad);border-radius:var(--radius) var(--radius) 0 0}
 .hero .greet{font-size:.8rem;font-weight:800;letter-spacing:.04em;color:var(--primary-d);text-transform:none}
 .herorow{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-top:6px}
 .kic{font-size:.78rem;font-weight:700;color:var(--muted)}
@@ -142,14 +160,24 @@ h1{font-size:1.42rem;margin:0;letter-spacing:-.01em;font-weight:700} h2{font-siz
 .qtext{font-size:1.18rem;font-weight:800;margin:10px 0 18px;line-height:1.5;white-space:pre-wrap}
 .opts{display:grid;gap:11px}
 .opt{display:flex;gap:13px;align-items:center;text-align:right;width:100%;padding:15px 16px;border:1.5px solid var(--border-2);
-  border-radius:13px;background:var(--surface);cursor:pointer;min-height:58px;transition:border-color .14s, background .14s, transform .08s}
-.opt:hover{border-color:var(--primary);background:var(--surface-2)} .opt:active{transform:scale(.994)}
-.opt .lett{width:31px;height:31px;border-radius:9px;background:var(--surface-3);font-weight:800;display:grid;place-items:center;flex:none;transition:.14s}
+  border-radius:14px;background:var(--surface);cursor:pointer;min-height:58px;box-shadow:var(--shadow-s);
+  transition:border-color .16s var(--ease), background .16s var(--ease), box-shadow .16s var(--ease), transform .1s var(--ease)}
+.opt:hover{border-color:var(--primary);background:var(--surface-2);transform:translateY(-1px);box-shadow:var(--shadow)} .opt:active{transform:scale(.994)}
+.opt .lett{width:31px;height:31px;border-radius:9px;background:var(--surface-3);font-weight:800;display:grid;place-items:center;flex:none;transition:.16s var(--ease)}
 .opt .otext{flex:1}
-.opt.sel{border-color:var(--primary);background:var(--primary-soft)} .opt.sel .lett{background:var(--primary);color:#fff}
+.opt.sel{border-color:var(--primary);background:var(--primary-soft);box-shadow:0 0 0 3px color-mix(in srgb,var(--primary) 20%,transparent)} .opt.sel .lett{background:var(--grad);color:#fff}
 .opt.correct{border-color:var(--ok);background:var(--ok-bg);animation:pop .3s} .opt.correct .lett{background:var(--ok);color:#fff}
 .opt.wrong{border-color:var(--bad);background:var(--bad-bg);animation:shake .35s} .opt.wrong .lett{background:var(--bad);color:#fff}
 .opt[aria-disabled="true"]{cursor:default}
+/* dark mode: lift option tiles off the card + boost contrast (was surface-on-surface, low legibility) */
+html[data-theme="dark"] .opt{background:#212a48;border-color:#3a4670;color:#f5f7ff}
+html[data-theme="dark"] .opt:hover{background:#2a3557;border-color:var(--primary)}
+html[data-theme="dark"] .opt .lett{background:#333f63;color:#e7ecf5}
+html[data-theme="dark"] .opt.sel{background:#3a30a8;border-color:#b4abff}
+html[data-theme="dark"] .opt.sel .otext{color:#fff;font-weight:600}
+html[data-theme="dark"] .opt.correct{background:#0e6b52;border-color:#2dd4a7}
+html[data-theme="dark"] .opt.wrong{background:#8f2a30;border-color:#f2555a}
+html[data-theme="dark"] .opt.correct .otext,html[data-theme="dark"] .opt.wrong .otext{color:#fff}
 @keyframes pop{0%{transform:scale(1)}40%{transform:scale(1.015)}100%{transform:scale(1)}}
 @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
 .feedback{margin-top:16px;padding:16px;border-radius:13px;border:1px solid var(--border);background:var(--surface-2);animation:rise .22s both}
@@ -243,13 +271,13 @@ h1{letter-spacing:-.02em} h2{letter-spacing:-.01em}
 /* ---- Desktop app-shell: fixed right sidebar nav, content fills the rest ---- */
 #sidebar{display:none}
 .sb-brand{display:flex;align-items:center;gap:10px;font-weight:800;padding:4px 8px 14px;border-bottom:1px solid var(--border);margin-bottom:8px}
-.sb-brand .mark{width:32px;height:32px;border-radius:9px;display:grid;place-items:center;color:#fff;background:var(--primary);font-size:16px;flex:none}
+.sb-brand .mark{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;color:#fff;background:var(--grad);box-shadow:var(--glow);font-size:16px;flex:none}
 .sb-brand small{display:block;font-weight:600;font-size:.72rem;color:var(--muted)}
 .sb-nav{display:flex;flex-direction:column;gap:3px;flex:1}
 .sbtn{display:flex;align-items:center;gap:11px;width:100%;text-align:start;border:none;background:transparent;color:var(--text);font-weight:700;font-size:.98rem;padding:11px 12px;border-radius:11px;cursor:pointer;transition:background .13s,color .13s}
 .sbtn .si{font-size:1.12rem;width:1.4em;text-align:center;flex:none}
 .sbtn:hover{background:var(--surface-2)}
-.sbtn.active{background:var(--primary);color:#fff}
+.sbtn.active{background:var(--grad);color:#fff;box-shadow:var(--glow)}
 .sbtn .dot{position:static;margin-inline-start:auto;width:9px;height:9px;border-radius:50%;background:var(--bad)}
 .sb-foot{display:flex;gap:8px;padding-top:10px;border-top:1px solid var(--border)}
 .home-top{ display:grid; gap:16px; }
@@ -287,7 +315,7 @@ h1{letter-spacing:-.02em} h2{letter-spacing:-.01em}
   color:var(--text);font-size:1rem;font-family:inherit}
 .tabbar{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
 .tab{padding:10px 15px;border-radius:999px;border:1px solid var(--border-2);background:var(--surface);font-weight:800;min-height:44px;font-size:.9rem;transition:.14s}
-.tab.active{background:var(--primary);color:#fff;border-color:transparent}
+.tab.active{background:var(--grad);color:#fff;border-color:transparent;box-shadow:var(--glow)}
 .gcat{margin-top:14px} .gcat h2{margin-bottom:8px}
 .gitem{display:grid;grid-template-columns:auto 1fr;gap:12px;padding:11px 4px;border-bottom:1px solid var(--border)}
 .gitem b{color:var(--primary-d);white-space:nowrap}
@@ -344,7 +372,7 @@ select.search{appearance:none;-webkit-appearance:none;cursor:pointer;background-
 .tabnav button{border:none;background:transparent;border-radius:13px;padding:8px 12px;min-width:60px;min-height:52px;
   display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--muted);font-weight:700;font-size:.72rem;transition:.15s;position:relative}
 .tabnav button .ti{font-size:1.2rem;line-height:1}
-.tabnav button.active{color:#fff;background:var(--primary)}
+.tabnav button.active{color:#fff;background:var(--grad);box-shadow:0 4px 14px rgba(90,79,242,.42)}
 .tabnav button:not(.active):hover{background:var(--surface-2);color:var(--text)}
 .tabnav .dot{position:absolute;top:5px;inset-inline-start:50%;width:7px;height:7px;border-radius:50%;background:var(--bad)}
 
@@ -1736,14 +1764,14 @@ html[data-contrast="high"] :focus-visible{outline-width:4px;outline-offset:2px}
   "options": [
    "התאמת ההתערבות בסביבות הטבעיות של הילד (כיתה, חצר)",
    "נגישות גבוהה לטיפול ללא תלות בהסעות מצד ההורים",
-   "אפשרות לשיתוף פעולה שוטף עם הצוות החינוכי בכיתה",
+   "התאמת לוח הזמנים של הטיפול לשעות הלימודים של הילד",
    "אפשרות לעבודה פרטנית בחדר מבודד ושקט מגירויים"
   ],
   "answer": 0,
   "opt_why": [
    "✓ נכון. הטיפול בבית הספר מאפשר התאמה והתערבות בסביבות הטבעיות שבהן הילד מתפקד, ומשפר הכללה.",
    "נגישות וחיסכון בהסעות הם יתרון משני אמיתי, אך לא ההיגיון המרכזי של טיפול בהקשר טבעי — מסיח קרוב.",
-   "שיתוף פעולה עם הצוות החינוכי הוא יתרון אמיתי ונגזרת של ההקשר, אך אינו היתרון הגרעיני — ההתאמה בסביבה הטבעית — מפתה כי גם הוא ייחודי לבית הספר.",
+   "התאמת לוח הזמנים לשעות הלימודים היא נוחות לוגיסטית אמיתית, אך אינה היתרון הגרעיני — ההתאמה בהקשר הטבעי; מסיח קרוב.",
    "חדר מבודד ושקט הוא דווקא יתרון של מכון, ומנוגד למהות ההתערבות בהקשר הטבעי — מפתה כי לעיתים נדרשת סביבה מופחתת גירויים."
   ],
   "explanation": "היתרון המרכזי של טיפול בית-ספרי הוא ההקשר הטבעי: התערבות והנגשה בסביבות שבהן הילד פועל באמת (כיתה, חצר), המשפרות הכללה. נגישות ושיתוף צוות הם יתרונות נלווים אמיתיים אך לא הגרעין, וחדר מבודד הוא דווקא מאפיין של מכון.",
@@ -2075,7 +2103,7 @@ html[data-contrast="high"] :focus-visible{outline-width:4px;outline-offset:2px}
   "cluster": 6,
   "q": "לחץ עמוק (Deep pressure) ופעילות פרופריוצפטיבית (כמו נשיאת משקל ומשיכה) משמשים לרוב כדי:",
   "options": [
-   "לסייע בהרגעה ובוויסות העוררות (אפקט מארגן)",
+   "לסייע בהרגעה ובוויסות העוררות",
    "להעלות את רמת העוררות והערנות לקראת משימה",
    "לשפר את הדיסקרימינציה והמודעות למיקום הגוף בלבד",
    "לחזק את כוח השרירים וטווח התנועה במפרקים"
@@ -2255,14 +2283,14 @@ html[data-contrast="high"] :focus-visible{outline-width:4px;outline-offset:2px}
   "cluster": 7,
   "q": "מהי גישה מקובלת לשיפור כתב יד אצל ילד עם דיסגרפיה?",
   "options": [
-   "הגברת כמות תרגול הכתיבה השגרתי, מתוך הנחה שחזרה לבדה תפתור את הקושי",
+   "אימון מוטורי חוזר של תבניות האותיות עם משוב על דיוק הצורה",
    "שילוב תרגול רב-חושי, התאמת כלי כתיבה/אחיזה, עבודה על יציבה והתאמות סביבתיות",
    "מעבר מיידי ובלעדי למקלדת, תוך ויתור על אימון הכתיבה בכתב יד",
    "התמקדות בלעדית בחיזוק שרירי כף היד כתנאי מקדים לכל כתיבה"
   ],
   "answer": 1,
   "opt_why": [
-   "עוד מאותו תרגול לא פותר דיסגרפיה; נדרשת התערבות רב-חושית והתאמות, לא רק כמות.",
+   "אימון מוטורי של תבניות האותיות הוא רכיב לגיטימי, אך לבדו הוא צר; דיסגרפיה מצריכה גם התאמות כלי, יציבה ותרגול רב-חושי — מסיח קרוב.",
    "✓ נכון. הגישה משלבת תרגול רב-חושי, התאמת כלי כתיבה/אחיזה, עבודה על יציבה והתאמות סביבתיות.",
    "מעבר בלעדי למקלדת מוותר על אימון הכתיבה; המקלדת היא התאמה משלימה, לא תחליף גורף.",
    "חיזוק שרירי כתנאי מקדים בלבד הוא bottom-up צר; הכתיבה דורשת התערבות רחבה ורב-מערכתית."
@@ -2496,19 +2524,19 @@ html[data-contrast="high"] :focus-visible{outline-width:4px;outline-offset:2px}
   "cluster": 8,
   "q": "מהו רפלקס ATNR (Asymmetric Tonic Neck Reflex) ומה משמעות התמשכותו מעבר לגיל הצפוי?",
   "options": [
-   "סיבוב הראש לצד מביא ליישור הגפיים באותו צד ולכיפופן בצד הנגדי; התמשכותו עלולה להפריע לתפקוד ולחציית קו אמצע",
-   "כיפוף הראש קדימה מביא לכיפוף הזרועות וליישור הרגליים (דפוס STNR), והתמשכותו מקשה על זחילה",
-   "הטיית הגוף הצידה מעוררת יישור אוטומטי של הראש לשמירת אנכיות (תגובת יישור בוגרת)",
-   "ירידה פתאומית של הראש לאחור מעוררת פרישה וקירוב של הזרועות (רפלקס Moro)"
+   "סיבוב הראש לצד מיישר את הגפיים באותו צד ומכופפם בצד הנגדי; התמשכותו מפריעה לחציית קו האמצע",
+   "כיפוף הראש קדימה מכופף את הזרועות ומיישר את הרגליים, והתמשכותו מקשה על הזחילה",
+   "הטיית הגוף הצידה מעוררת יישור אוטומטי של הראש לשמירת אנכיות הגוף",
+   "ירידה פתאומית של הראש לאחור מעוררת פרישה ואז קירוב של הזרועות"
   ],
   "answer": 0,
   "opt_why": [
-   "✓ נכון. ב-ATNR סיבוב הראש לצד מביא ליישור הגפיים באותו צד ולכיפופן בצד הנגדי; התמשכותו מעבר לגיל מפריעה לתפקוד ולחציית קו האמצע.",
-   "זהו תיאור של רפלקס STNR (תלוי כיפוף/יישור צוואר), לא ATNR שתלוי בסיבוב הראש לצד.",
-   "זוהי תגובת יישור (righting) בוגרת ותקינה, ולא רפלקס ATNR פרימיטיבי.",
-   "זהו רפלקס Moro המופעל משינוי פתאומי בתנוחת הראש, ואינו ATNR."
+   "✓ נכון. ב-ATNR סיבוב הראש לצד מיישר את גפי אותו הצד ומכופף את הנגדי ('תנוחת המתאגרף'); התמשכותו פוגעת בחציית קו האמצע ובתפקוד הדו-צדדי.",
+   "זהו דפוס STNR (כיפוף ראש → כיפוף זרועות ויישור רגליים), לא ATNR; הוא תלוי בכיפוף/יישור הראש ולא בסיבובו הצידה.",
+   "זוהי תגובת יישור בוגרת ותקינה (righting) לשמירת אנכיות — תגובה רצויה, ולא רפלקס פרימיטיבי שהתמשכותו פתולוגית.",
+   "זהו רפלקס Moro (הרתעה לירידת הראש לאחור עם פרישה וקירוב זרועות), ולא ATNR."
   ],
-  "explanation": "ב-ATNR, סיבוב הראש לצד גורם ליישור גפי אותו צד וכיפוף הצד הנגדי ('תנוחת מתאגרף'). הוא תקין בינקות המוקדמת אך התמשכותו (כמו ב-CP) מפריעה לחציית קו אמצע, לאחיזה דו-ידנית ולתפקוד.",
+  "explanation": "רפלקס ATNR: סיבוב הראש לצד מיישר את הגפיים באותו צד ומכופף את הצד הנגדי ('תנוחת המתאגרף'), ואמור להיטמע עד גיל כ-6 חודשים. התמשכותו מעבר לכך מפריעה לחציית קו האמצע, לאחיזה דו-צדדית ולתפקוד הסימטרי. STNR, Moro ותגובות היישור הם דפוסים אחרים.",
   "source": "רפלקסים פרימיטיביים — ATNR · Case-Smith"
  },
  {
@@ -3239,17 +3267,17 @@ html[data-contrast="high"] :focus-visible{outline-width:4px;outline-offset:2px}
   "cluster": 11,
   "q": "מהו כיווץ שרירי 'אקסצנטרי' (Eccentric)?",
   "options": [
-   "השריר מתקצר תוך הפעלת כוח (כיווץ קונצנטרי), למשל הרמת משקל",
-   "השריר מתארך (תחת מתח) תוך כדי הפעלת כוח, למשל הורדה מבוקרת של משקל",
-   "אורך השריר אינו משתנה תוך הפעלת כוח (כיווץ איזומטרי)",
-   "השריר רפוי לחלוטין ואינו מפעיל כוח כלל"
+   "השריר מתקצר תחת מתח תוך הפעלת כוח, למשל בהרמה מבוקרת של משקל",
+   "השריר מתארך תחת מתח תוך הפעלת כוח, למשל בהורדה מבוקרת של משקל",
+   "אורך השריר נשמר קבוע תוך הפעלת כוח, כמו בהחזקת משקל במקום",
+   "השריר רפוי ואינו מפעיל כוח כלל"
   ],
   "answer": 1,
   "opt_why": [
-   "התקצרות תוך הפעלת כוח היא כיווץ קונצנטרי, לא אקסצנטרי.",
-   "✓ נכון. בכיווץ אקסצנטרי השריר מתארך תחת מתח תוך הפעלת כוח, למשל בהורדה מבוקרת של משקל.",
-   "אורך קבוע תוך הפעלת כוח הוא כיווץ איזומטרי, לא אקסצנטרי.",
-   "בכיווץ אקסצנטרי השריר פעיל ומפעיל כוח תוך התארכות, לא רפוי."
+   "התקצרות השריר תוך הפעלת כוח מאפיינת כיווץ קונצנטרי — ההפך מאקסצנטרי.",
+   "✓ נכון. בכיווץ אקסצנטרי השריר מתארך תחת מתח תוך הפעלת כוח, כמו בהורדה מבוקרת של משקל נגד הכבידה.",
+   "שמירה על אורך קבוע תוך הפעלת כוח מאפיינת כיווץ איזומטרי, ללא שינוי באורך השריר.",
+   "בכיווץ אקסצנטרי השריר פעיל ומפעיל כוח תוך התארכות, ולכן אינו רפוי."
   ],
   "explanation": "בכיווץ אקסצנטרי השריר מפעיל כוח אך מתארך (למשל בהורדה מבוקרת של חפץ נגד הכבידה). בכיווץ קונצנטרי השריר מתקצר, ובכיווץ איזומטרי אורכו נשמר ללא תנועת מפרק.",
   "source": "קינזיולוגיה — סוגי כיווץ שריר"
@@ -4307,21 +4335,21 @@ html[data-contrast="high"] :focus-visible{outline-width:4px;outline-offset:2px}
  {
   "id": "c15-04",
   "cluster": 15,
-  "q": "מהו מבחן Box and Blocks (B&B)?",
+  "q": "מה מעריך מבחן Box and Blocks?",
   "options": [
-   "9-Hole Peg Test",
-   "Box and Blocks",
-   "דינמומטר Jamar",
-   "גוניומטר"
+   "זריזות ידנית גסה",
+   "זריזות ידנית עדינה",
+   "כוח אחיזה",
+   "טווח תנועה במפרק"
   ],
-  "answer": 1,
+  "answer": 0,
   "opt_why": [
-   "9-Hole Peg Test בודק זריזות יד עדינה ולא Box and Blocks; מסיח קרוב כי שניהם מבחני זריזות.",
-   "✓ נכון. Box and Blocks הוא מבחן זריזות יד גסה — מספר הקוביות שהנבדק מעביר מעל מחיצה בדקה.",
-   "דינמומטר Jamar מודד כוח אחיזה, לא זריזות יד גסה.",
-   "גוניומטר מודד טווח תנועה, לא זריזות בהעברת קוביות."
+   "✓ נכון. Box and Blocks מעריך זריזות ידנית גסה — מספר הקוביות שהנבדק מעביר מעל מחיצה בדקה.",
+   "זריזות ידנית עדינה (מניפולציה של חפצים קטנים) נמדדת במבחנים כמו 9-Hole Peg, לא ב-Box and Blocks.",
+   "כוח אחיזה נמדד בדינמומטר (Jamar), ולא במבחן זה.",
+   "טווח תנועה במפרק נמדד בגוניומטר, ולא במבחן זה."
   ],
-  "explanation": "ב-B&B סופרים כמה קוביות מעביר הנבדק מעל מחיצה בתוך דקה — מדד מהיר וסטנדרטי לזריזות יד גסה ולתיאום עין-יד, שימושי למעקב אחר התקדמות בשיקום יד וגף עליון.",
+  "explanation": "מבחן Box and Blocks מודד זריזות ידנית גסה (gross manual dexterity): הנבדק מעביר קוביות בגודל אחיד מעל מחיצה מתא לתא במשך דקה, והציון הוא מספר הקוביות שהועברו. זריזות עדינה נמדדת ב-9-Hole Peg, כוח אחיזה בדינמומטר Jamar וטווח תנועה בגוניומטר.",
   "source": "Box and Blocks Test · אבחוני יד"
  },
  {
@@ -5089,14 +5117,14 @@ html[data-contrast="high"] :focus-visible{outline-width:4px;outline-offset:2px}
   "cluster": 18,
   "q": "לפי נייר העמדה על נגישות והשתתפות, מהו תפקיד ייחודי של הריפוי בעיסוק בקידום השתתפות אנשים עם מוגבלות?",
   "options": [
-   "אבחון וטיפול בליקויי הגוף (body functions) כדרך הבלעדית לקדם השתתפות",
-   "קידום השתתפות בעיסוקים משמעותיים דרך התאמת אדם-עיסוק-סביבה, הנגשה והסרת חסמים",
+   "שיקום תפקודי הגוף והמיומנויות כבסיס עיקרי לשיפור ההשתתפות",
+   "קידום השתתפות בעיסוקים משמעותיים דרך התאמת אדם-עיסוק-סביבה והסרת חסמים",
    "התאמת האדם לסביבה הקיימת בלבד, מבלי לפעול להסרת חסמים סביבתיים",
    "מתן המלצות כלליות לנגישות פיזית, ללא התייחסות לעיסוקים המשמעותיים לאדם"
   ],
   "answer": 1,
   "opt_why": [
-   "מיקוד בליקויי גוף בלבד הוא גישה צרה; הייחוד הוא קידום השתתפות דרך התאמת אדם-עיסוק-סביבה, לא רק הגוף.",
+   "שיקום תפקודי הגוף הוא חלק מהעבודה, אך הייחוד של הריפוי בעיסוק הוא מיקוד בהשתתפות בעיסוק דרך התאמת אדם-עיסוק-סביבה — לא רק הגוף; מסיח קרוב.",
    "✓ נכון. הריפוי בעיסוק מקדם השתתפות בעיסוקים משמעותיים דרך התאמת אדם-עיסוק-סביבה, הנגשה והסרת חסמים.",
    "התאמת האדם בלבד מתעלמת מהסביבה; הסרת חסמים סביבתיים היא חלק מהותי מהתפקיד.",
    "המלצות נגישות כלליות ללא קשר לעיסוקים המשמעותיים מפספסות את הליבה — השתתפות בעיסוק."
@@ -5847,7 +5875,7 @@ html[data-contrast="high"] :focus-visible{outline-width:4px;outline-offset:2px}
  {
   "id": "sh24-09",
   "cluster": 8,
-  "q": "לאיזו אוכלוסיית ילדים מתאים במיוחד טיפול במראה (Mirror therapy)?",
+  "q": "לאיזו אוכלוסיית ילדים מתאים במיוחד טיפול במראה לשיפור התפקוד המוטורי של גף עליון חלש?",
   "options": [
    "ילדים עם המיפרזיס",
    "ילדים עם CP דיפלגי",
@@ -5859,9 +5887,9 @@ html[data-contrast="high"] :focus-visible{outline-width:4px;outline-offset:2px}
    "✓ נכון. טיפול במראה מתאים במיוחד למצב חד-צדדי כמו המיפרזיס — המראה משקפת את הצד התקין ומעודדת הפעלת הצד הפגוע.",
    "ב-CP דיפלגי המעורבות דו-צדדית ואין צד 'תקין' שלם לשקף; מסיח קרוב כי גם זו אוכלוסיית CP מוטורית.",
    "ב-DCD אין שיתוק חד-צדדי שהמראה ממנפת; מסיח קרוב כי זו אוכלוסייה מוטורית-התפתחותית.",
-   "טיפול במראה אכן מיושם לכאבי פנטום לאחר קטיעה, אך השאלה על אוכלוסיית ילדים עם חולשת צד שבה משקפים תנועת גף; זהו שימוש לכאב ולא להפעלת גף חלש מקביל — מסיח קרוב מאוד."
+   "טיפול במראה אכן יעיל לכאבי פנטום לאחר קטיעה — אך זהו שימוש לכאב, ואילו כאן מדובר בהפעלת גף עליון חלש הקיים בגוף; מסיח קרוב מאוד."
   ],
-  "explanation": "טיפול במראה מנצל משוב חזותי של הגף התקין כדי לעודד תנועה וייצוג מוחי של הגף הפגוע, ולכן מתאים למצבים חד-צדדיים כמו המיפרזיס. בפגיעה דו-צדדית (דיפלגיה) אין גף תקין לשקף, וב-DCD אין שיתוק חד-צדדי. בקטיעה משמשת המראה לכאב פנטום ולא להפעלת גף מקביל חלש.",
+  "explanation": "לשיפור תפקוד מוטורי, טיפול במראה מנצל את השתקפות הגף התקין כדי לעודד תנועה וייצוג מוחי של גף עליון חלש הקיים — ולכן מתאים למצב חד-צדדי כמו המיפרזיס. ב-CP דיפלגי המעורבות דו-צדדית ואין צד תקין לשקף, וב-DCD אין חולשת צד. הערה: טיפול במראה יעיל גם לכאבי פנטום לאחר קטיעה, אך זו מטרה של הקלת כאב ולא הפעלת גף חלש מקביל.",
   "source": "שחזור קיץ 2024, שאלה 9 · Mirror therapy"
  },
  {
@@ -5909,7 +5937,7 @@ html[data-contrast="high"] :focus-visible{outline-width:4px;outline-offset:2px}
   "cluster": 15,
   "q": "בחור בן 18 לומד נהיגה ומתקשה להבחין בין התמרור לרקע ולכן אינו מצליח לקרוא אותו. באיזה אבחון תשתמש המרפאה בעיסוק להערכת הקושי?",
   "options": [
-   "MVPT — תפיסה חזותית (כולל Figure-ground)",
+   "MVPT — תפיסה חזותית",
    "MMSE — סקר קוגניטיבי כללי",
    "OSA — הערכה עצמית עיסוקית",
    "CMT — זיכרון"
@@ -6771,7 +6799,7 @@ html[data-contrast="high"] :focus-visible{outline-width:4px;outline-offset:2px}
   "cluster": 3,
   "q": "בקבוצת SCIT למתמודדים עם סכיזופרניה, על מה עובדים בעיקר?",
   "options": [
-   "זיהוי רגשות, תיאוריית התודעה וסגנון ייחוס (קוגניציה חברתית)",
+   "זיהוי רגשות, תיאוריית התודעה וסגנון ייחוס",
    "מתן ידע על המחלה ועל החשיבות בנטילת תרופות",
    "ויסות חושי דרך פעילות סנסו-מוטורית גופנית",
    "חיזוק שרירים וסיבולת לתפקוד יומיומי"
@@ -8873,14 +8901,14 @@ html[data-contrast="high"] :focus-visible{outline-width:4px;outline-offset:2px}
   "q": "מטופל לאחר פגיעת ראש מופנה לשיפור קואורדינציה ביד. מה יכול להיות חלק מההתערבות?",
   "options": [
    "ייצוב המרפק על שולחן לצמצום דרגות החופש תוך ביצוע מטלה",
-   "תוספת משקולת קלה לשורש כף היד להגברת הקלט הפרופריוצפטיבי",
+   "הוספת משקל כבד למרפק כדי למנוע תנועה בזמן ביצוע המטלה",
    "התחלה בתנועות דיסטליות עדינות לפני ייצוב פרוקסימלי",
    "האצת קצב התנועה כדי לאתגר את מהירות התגובה"
   ],
   "answer": 0,
   "opt_why": [
    "✓ נכון. צמצום דרגות החופש בייצוב פרוקסימלי (מרפק על שולחן) מאפשר תרגול מבוקר והדרגתי של שליטה דיסטלית.",
-   "הוספת משקולת לשורש כף היד היא טכניקה אפשרית בטרמור, אך אינה עיקרון 'צמצום דרגות החופש' ואינה הבחירה הראשונה לקואורדינציה כללית; מסיח מפתה כי הוא נשמע טכני-נכון.",
+   "משקל כבד המונע תנועה אינו מתרגל קואורדינציה; ייצוב פרוקסימלי נעשה כדי לאפשר תנועה דיסטלית מבוקרת ולא למנוע אותה.",
    "מתחילים דווקא בייצוב פרוקסימלי לפני שחרור הדיסטלי — סדר הפוך לעקרון; מסיח מפתה כי הוא מזכיר את אותם רכיבים.",
    "האצת הקצב מגבירה את עומס השליטה ופוגעת בדיוק בשלב מוקדם של אימון קואורדינציה."
   ],
@@ -9974,14 +10002,14 @@ html[data-contrast="high"] :focus-visible{outline-width:4px;outline-offset:2px}
   "q": "באיזה כלי תשתמש מרפאה בעיסוק שרוצה להתרשם בתצפית מעוצמות ומאתגרים של פעוט בן שנתיים בתחום המשחק?",
   "options": [
    "TOP",
-   "ToP / Play History",
+   "Play History",
    "M-FUN",
    "Sensory Profile"
   ],
   "answer": 0,
   "opt_why": [
    "✓ נכון. ה-TOP הוא כלי תצפיתי המעריך את איכות המשחקיות (playfulness) דרך תצפית ישירה, ומתאים להתרשם מעוצמות ומאתגרים בתחום המשחק של פעוט.",
-   "ראיון על היסטוריית משחק נוגע אכן בתחום המשחק, אך הוא ראיון/דיווח ולא תצפית ישירה כפי שהמטלה דורשת — לכן זה ה-near-miss החזק.",
+   "Play History הוא ראיון על היסטוריית המשחק — הוא נוגע בתחום המשחק אך מבוסס דיווח ולא תצפית ישירה כפי שהמטלה דורשת; זהו ה-near-miss החזק.",
    "M-FUN מעריך תפקוד מוטורי (עדין, גס, ויזומוטורי) ולא את ממד המשחקיות עצמו.",
    "Sensory Profile הוא שאלון להורים על עיבוד חושי, אינו תצפית ואינו מודד משחקיות."
   ],
@@ -12236,14 +12264,14 @@ html[data-contrast="high"] :focus-visible{outline-width:4px;outline-offset:2px}
    "לעיסת מסטיק",
    "אכילת צלחת מרק",
    "אכילת ארטיק",
-   "אכילת סטייק"
+   "שתייה מכוס מים"
   ],
   "answer": 1,
   "opt_why": [
    "לעיסת מסטיק היא פעולה אוטומטית ללא צורך בכלי או ברצף פעולות מתוכנן, ולכן לא תיפגע.",
    "✓ נכון. אכילת מרק דורשת שימוש מתוכנן בכלי (כף), הבאה לפה ברצף נכון ושימוש מותאם בחפץ — בדיוק הרכיבים שנפגעים באפרקסיה רעיונית.",
    "אכילת ארטיק מצריכה אחיזה פשוטה והבאה לפה ללא רצף מורכב של שימוש בכלי, ולכן פחות פגיעה.",
-   "אכילת סטייק כרוכה בשימוש בסכין ומזלג ולכאורה מורכבת, אך הקושי הליבתי באפרקסיה רעיונית מתבטא ברצף השימוש הבסיסי בכלי האכילה — המרק ממחיש זאת מובהק; זהו מסיח חזק."
+   "שתייה מכוס דורשת אחיזה פשוטה והבאה לפה ללא רצף מתוכנן של שימוש בכלים, ולכן פחות מושפעת מאפרקסיה רעיונית."
   ],
   "explanation": "באפרקסיה רעיונית נפגעת ההבנה של רצף השימוש בכלים ובחפצים. אכילת מרק עם כף ממחישה את הקושי בשימוש מתוכנן ורציף בכלי, בניגוד לפעולות אוטומטיות כמו לעיסה או אחיזת ארטיק.",
   "source": "שחזור חורף 2019 · שאלה 55"
@@ -13615,17 +13643,17 @@ html[data-contrast="high"] :focus-visible{outline-width:4px;outline-offset:2px}
   "options": [
    "Medial epicondylitis",
    "Lateral epicondylitis",
-   "Tennis elbow",
+   "Cubital tunnel syndrome",
    "Intersection syndrome"
   ],
   "answer": 0,
   "opt_why": [
    "✓ נכון. כאב המתגבר בפרונציה ובכיפוף (פלקסיה) של שורש כף היד נגד התנגדות אופייני ל-medial epicondylitis ('מרפק הגולף'), הפוגע במקור הכופפים והפרונטור באפיקונדיל המדיאלי.",
    "✗ Lateral epicondylitis מתבטא בכאב בעת אקסטנשן של שורש כף היד נגד התנגדות, ולא בפלקסיה ובפרונציה.",
-   "✗ Tennis elbow הוא שם נרדף ל-lateral epicondylitis ומאופיין בכאב באקסטנשן, ולכן אינו מתאים לתבנית התסמינים כאן.",
+   "✗ Cubital tunnel syndrome היא לחיצה על העצב האולנרי במרפק (נימול/כאב בצד המדיאלי כלפי אצבעות 4–5), ולא כאב מכני המתגבר בפרונציה וכיפוף נגד התנגדות — מסיח קרוב אנטומית.",
    "✗ Intersection syndrome פוגע באזור הגב-רדיאלי של האמה (הצטלבות הגידים) ולא באפיקונדיל המדיאלי של המרפק."
   ],
-  "explanation": "החמרת כאב במרפק בעת פרונציה ופלקסיה של שורש כף היד נגד התנגדות אופיינית ל-medial epicondylitis ('מרפק הגולף'), הפוגע במקור הכופפים והפרונטור באפיקונדיל המדיאלי. Lateral epicondylitis (Tennis elbow) מתבטא דווקא בכאב באקסטנשן.",
+  "explanation": "החמרת כאב במרפק בעת פרונציה וכיפוף (פלקסיה) של שורש כף היד נגד התנגדות אופיינית ל-Medial epicondylitis ('מרפק הגולף'), הפוגע במקור הכופפים והפרונטור באפיקונדיל המדיאלי. Lateral epicondylitis הוא כאב באקסטנשן (בצד הלטרלי), Cubital tunnel היא פגיעת עצב אולנרי, ו-Intersection syndrome פוגע בגב-רדיאלי של האמה.",
   "source": "שחזור 2020 · שאלה 25"
  },
  {
