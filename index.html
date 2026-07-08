@@ -37,14 +37,15 @@
   --fs:1; /* user font-scale multiplier (A-/A+) */
 }
 html[data-theme="dark"]{
-  --bg:#0a0e1c; --bg2:#101635;
-  --surface:#151c34; --surface-2:#1e2643; --surface-3:#2a3357;
-  --text:#eef1fc; --muted:#abb3d1; --faint:#7b84a6;
+  /* single source of truth for the dark palette — clear surface hierarchy bg < card < option */
+  --bg:#090d1a; --bg2:#111834;
+  --surface:#182137; --surface-2:#232f52; --surface-3:#30406a;
+  --text:#f2f5fc; --muted:#c4cde4; --faint:#aab4d2;
   --primary:#7d6dff; --primary-2:#6a5cf7; --primary-d:#b4abff; --primary-soft:#282361;
   --accent:#a855f7; --accent-soft:#2e1065;
-  --border:#2a3357; --border-2:#333d63;
-  --ok:#2dd4a7; --ok-bg:#0a4d3c; --bad:#f2555a; --bad-bg:#5c1a1d;
-  --warn:#f5b041; --warn-bg:#3d2a08; --flag:#c084fc;
+  --border:#313d61; --border-2:#45557f;
+  --ok:#34d399; --ok-bg:#0e3a2b; --bad:#f87171; --bad-bg:#4a1e26;
+  --warn:#fbbf24; --warn-bg:#3a2c10; --flag:#c084fc;
   --ring-track:#2a3357;
   --grad:linear-gradient(135deg,#7d6dff 0%,#a855f7 100%);
   --shadow-s:0 1px 2px rgba(0,0,0,.45); --shadow:0 4px 14px rgba(0,0,0,.5), 0 12px 30px rgba(0,0,0,.4); --shadow-l:0 12px 32px rgba(0,0,0,.6);
@@ -170,13 +171,13 @@ h1{font-size:1.42rem;margin:0;letter-spacing:-.01em;font-weight:700} h2{font-siz
 .opt.wrong{border-color:var(--bad);background:var(--bad-bg);animation:shake .35s} .opt.wrong .lett{background:var(--bad);color:#fff}
 .opt[aria-disabled="true"]{cursor:default}
 /* dark mode: lift option tiles off the card + boost contrast (was surface-on-surface, low legibility) */
-html[data-theme="dark"] .opt{background:#212a48;border-color:#3a4670;color:#f5f7ff}
-html[data-theme="dark"] .opt:hover{background:#2a3557;border-color:var(--primary)}
-html[data-theme="dark"] .opt .lett{background:#333f63;color:#e7ecf5}
-html[data-theme="dark"] .opt.sel{background:#3a30a8;border-color:#b4abff}
+html[data-theme="dark"] .opt{background:#232f54;border-color:#45557f;color:#f4f7ff}
+html[data-theme="dark"] .opt:hover{background:#2c3a63;border-color:var(--primary)}
+html[data-theme="dark"] .opt .lett{background:#37456f;color:#e7ecf5}
+html[data-theme="dark"] .opt.sel{background:#3a2fa6;border-color:#c1b9ff}
 html[data-theme="dark"] .opt.sel .otext{color:#fff;font-weight:600}
-html[data-theme="dark"] .opt.correct{background:#0e6b52;border-color:#2dd4a7}
-html[data-theme="dark"] .opt.wrong{background:#8f2a30;border-color:#f2555a}
+html[data-theme="dark"] .opt.correct{background:#0f7458;border-color:#34d399}
+html[data-theme="dark"] .opt.wrong{background:#9a2d34;border-color:#f87171}
 html[data-theme="dark"] .opt.correct .otext,html[data-theme="dark"] .opt.wrong .otext{color:#fff}
 @keyframes pop{0%{transform:scale(1)}40%{transform:scale(1.015)}100%{transform:scale(1)}}
 @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
@@ -431,16 +432,7 @@ html,body{overflow-x:clip;max-width:100%}
 .logo>span:last-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
 
 /* ===================== dark mode contrast & polish ===================== */
-html[data-theme="dark"]{
-  --bg:#0e1322; --bg2:#141a2c;
-  --surface:#1b2236; --surface-2:#28324c; --surface-3:#3a4763;
-  --text:#f3f6fc; --muted:#c4cdde; --faint:#94a2b8;
-  --border:#3b4763; --border-2:#4a5874;
-  /* success/error/soft tints retuned for dark so text stays readable on them */
-  --ok:#34d399; --ok-bg:#10301f; --bad:#f87171; --bad-bg:#3a1822;
-  --warn:#fbbf24; --warn-bg:#3a2c10;
-  --primary-soft:#242a52; --accent-soft:#2a1f47; --ring-track:#2c3550;
-}
+/* (dark palette root consolidated into the block near the top of the stylesheet) */
 html[data-theme="dark"] body{
   background:
     radial-gradient(900px 340px at 100% -8%, rgba(139,92,246,.13), transparent 62%),
@@ -1457,21 +1449,21 @@ html[data-contrast="high"] :focus-visible{outline-width:4px;outline-offset:2px}
  {
   "id": "c4-02",
   "cluster": 4,
-  "q": "מרפאה בעיסוק עובדת בבית ספר משלב ילדים על הספקטרום האוטיסטי. מי מהבאים מתאים להתערבות בגישת Top-down?",
+  "q": "מרפאה בעיסוק עובדת בבית ספר שבו משולבים ילדים על הספקטרום האוטיסטי. מי מהבאים מתאים להתערבות בגישת Top-down?",
   "options": [
    "ייעוץ בנוגע להנגשת סביבת הכיתה",
    "תרגול אסטרטגיות לוויסות עצמי",
-   "שיפור מיומנויות מוטוריות-עדינות",
-   "אימון נקודתי של מיומנות בקרה ספציפית"
+   "שיפור מיומנויות למידה",
+   "הנחיית קבוצות לשיפור מיומנויות בקרה"
   ],
   "answer": 0,
   "opt_why": [
    "✓ נכון. ייעוץ והנגשת סביבת הכיתה הוא Top-down (מתחיל מהשתתפות ומסביבה).",
    "תרגול ויסות עצמי הוא התערבות ברמת המרכיב = Bottom-up.",
-   "שיפור מיומנויות מוטוריות-עדינות הוא Bottom-up (מרכיב ביצוע).",
-   "אימון מיומנות בקרה ספציפית הוא Bottom-up."
+   "שיפור מיומנויות למידה הוא התערבות ברמת המרכיב/המיומנות = Bottom-up.",
+   "הנחיית קבוצות לשיפור מיומנות בקרה מכוונת לשיפור מיומנות ספציפית — עדיין Bottom-up. הגישה נקבעת לפי נקודת ההתחלה (עיסוק/הקשר), לא לפי הפורמט הקבוצתי."
   ],
-  "explanation": "גישת Top-down מתחילה מההשתתפות וההקשר: ייעוץ והנגשת סביבת הכיתה היא התערבות כלל-מערכתית התומכת בהשתתפות. שאר המסיחים ממוקדים בשיפור מיומנות בודדת — גישת Bottom-up.",
+  "explanation": "גישת Top-down מתחילה מההשתתפות וההקשר: ייעוץ והנגשת סביבת הכיתה היא התערבות כלל-מערכתית התומכת בהשתתפות. שאר המסיחים ממוקדים בשיפור מיומנות בודדת (ויסות, למידה, בקרה) — גישת Bottom-up. שימי לב: פורמט קבוצתי אינו הופך התערבות ל-Top-down; מה שקובע הוא נקודת ההתחלה.",
   "source": "שחזור קיץ 2025, שאלה 76 · Top-down vs Bottom-up"
  },
  {
@@ -1597,22 +1589,22 @@ html[data-contrast="high"] :focus-visible{outline-width:4px;outline-offset:2px}
  {
   "id": "c4-09",
   "cluster": 4,
-  "q": "בטיפול התנהגותי בילד, כיצד נקרא המושג המתאר תגובה הניתנת לאחר התנהגות ומגדילה את הסיכוי שתחזור בעתיד?",
+  "q": "בטיפול התנהגותי בילד, כיצד נקרא המושג המתאר תגובה הניתנת לאחר התנהגות רצויה ומגדילה את הסיכוי שתחזור בעתיד?",
   "options": [
    "חיזוק",
-   "עיצוב",
-   "ענישה",
-   "הכחדה"
+   "תדירות",
+   "טופוגרפיה",
+   "עוצמה"
   ],
   "answer": 0,
   "dgroup": "c4-09",
   "opt_why": [
-   "✓ נכון. תגובה הניתנת לאחר התנהגות ומגדילה את הסיכוי שתחזור היא חיזוק.",
-   "עיצוב הוא חיזוק הדרגתי של קירובים להתנהגות יעד; הוא מנגנון רחב יותר ואינו ההגדרה של 'תגובה המגדילה הישנות' — מסיח קרוב כי גם הוא מעלה התנהגות.",
-   "ענישה היא תגובה המפחיתה את הסיכוי שההתנהגות תחזור — ההפך מהמתואר, אך מפתה כי גם היא תגובה הניתנת לאחר התנהגות.",
-   "הכחדה היא הפסקת חיזוק שמובילה לדעיכת ההתנהגות — ההפך מהמתואר, מפתה כי גם היא עוסקת בתוצאה שאחרי ההתנהגות."
+   "✓ נכון. חיזוק (Reinforcement) הוא גירוי/תגובה הבא לאחר התנהגות ומגביר את הסבירות שההתנהגות הרצויה תחזור בעתיד.",
+   "תדירות (Frequency) היא מדד לכמה פעמים ההתנהגות מופיעה — ממד למדידת התנהגות, ולא מנגנון שמגביר אותה.",
+   "טופוגרפיה (Topography) מתארת את צורת/מבנה ההתנהגות (כיצד היא נראית) — ממד תיאורי, לא מנגנון חיזוק.",
+   "עוצמה (Intensity) היא מדד לעוצמת/כוח ההתנהגות — ממד למדידה, לא תגובה המגבירה הישנות."
   ],
-  "explanation": "חיזוק הוא תגובה (חיובית או שלילית) הניתנת בעקבות התנהגות ומגבירה את סבירות הישנותה. עיצוב הוא תהליך הדרגתי, ענישה מפחיתה התנהגות, והכחדה היא הפסקת חיזוק המביאה לדעיכה — כולם מושגי התניה אופרנטית מתחרים.",
+  "explanation": "חיזוק הוא עקרון בהתניה אופרנטית: תגובה/גירוי הניתן לאחר התנהגות רצויה ומגדיל את הסבירות שתחזור בעתיד. תדירות, טופוגרפיה ועוצמה הם ממדים לתיאור ומדידת התנהגות (כמה פעמים, כיצד נראית ובאיזו עוצמה) — ולא מנגנונים המגבירים אותה.",
   "source": "שחזור קיץ 2025, שאלה 80 · עקרונות התניה אופרנטית"
  },
  {
@@ -1722,7 +1714,7 @@ html[data-contrast="high"] :focus-visible{outline-width:4px;outline-offset:2px}
   "q": "מהו סדר ההתפתחות התקין של אחיזות אצל תינוק?",
   "options": [
    "אחיזה דיגיטלית ← פלמרית ← רדיאלית-פלמרית",
-   "אחיזה פלמרית ← אחיזה רדיאלית-פלמרית ← אחיזה דיגיטלית (פינצטה)",
+   "אחיזה פלמרית ← אחיזה רדיאלית-פלמרית ← אחיזה דיגיטלית",
    "אחיזה רדיאלית-פלמרית ← דיגיטלית ← פלמרית",
    "אחיזה פלמרית ← דיגיטלית ← רדיאלית-פלמרית"
   ],
@@ -3995,7 +3987,7 @@ html[data-contrast="high"] :focus-visible{outline-width:4px;outline-offset:2px}
   "q": "מהו עקרון מנחה בגישת Cog-Fun באשר לבסיס השינוי?",
   "options": [
    "אימון חזרתי של מיומנויות מוטוריות, ללא מרכיב מטה-קוגניטיבי",
-   "שילוב למידה מוטורית, מטה-קוגניציה ועקרונות התנהגותיים בהקשר עיסוקי ובתיווך הורי",
+   "שילוב למידה מוטורית, מטה-קוגניציה ועקרונות התנהגותיים בהקשר עיסוקי",
    "שינוי קוגניטיבי באמצעות תרגול ממוחשב אינטנסיבי של קשב וזיכרון",
    "התמקדות בלעדית בשינוי התנהגותי דרך חיזוקים, ללא מטה-קוגניציה"
   ],
@@ -4275,22 +4267,22 @@ html[data-contrast="high"] :focus-visible{outline-width:4px;outline-offset:2px}
  {
   "id": "c15-01",
   "cluster": 15,
-  "q": "מה נכון בהשוואה בין אבחון התמ\"ש (LOTCA) לאבחון ה-EFPT?",
+  "q": "מה נכון בהשוואה בין אבחון התמ\"ש (WCPA) לאבחון ה-EFPT?",
   "options": [
-   "התמ\"ש בודק קוגניציה דרך תת-מבחנים ויש לו גרסאות לפי רמה/גיל; ה-EFPT בודק תפקודים ניהוליים דרך מטלות תפקודיות עם מערכת רמזים מובְנית",
-   "שניהם בודקים תפקודים ניהוליים, אלא שהתמ\"ש עושה זאת דרך מטלות תפקודיות יומיומיות וה-EFPT דרך תת-מבחנים שולחניים",
-   "לשני הכלים אין מערכת רמזים מובְנית, והציון נקבע רק לפי הצלחה או כישלון כולל במטלה",
-   "שני הכלים מיועדים לאוכלוסייה הפדיאטרית בלבד ואינם תקפים להערכת מבוגרים"
+   "התמ\"ש בודק קוגניציה תפקודית, וה-EFPT מבוסס על גישה נוירופסיכולוגית",
+   "התמ\"ש מקודד את הביצוע לפי האסטרטגיות שבהן השתמש הנבדק, ואילו ה-EFPT אינו מקודד אסטרטגיות",
+   "לתמ\"ש יש גרסה אחת בלבד, ואילו ל-EFPT יש מספר גרסאות",
+   "התמ\"ש מיועד לגילאי 65+, וה-EFPT מתאים לגילאי 18+"
   ],
-  "answer": 0,
+  "answer": 1,
   "opt_why": [
-   "✓ נכון. התמ\"ש (LOTCA) בודק קוגניציה דרך תת-מבחנים ויש לו גרסאות לפי רמה וגיל; ה-EFPT בודק תפקודים ניהוליים דרך מטלות תפקודיות עם מערכת רמזים מובְנית.",
-   "היפוך: דווקא ה-EFPT מבוסס-ביצוע במטלות תפקודיות, והתמ\"ש בנוי מתת-מבחנים — ושני הכלים אינם בודקים אותו דבר.",
-   "סימן ההיכר של ה-EFPT הוא דווקא מערכת רמזים מדורגת ומובְנית, ולכן הטענה שאין לו רמזים שגויה.",
-   "שני הכלים משמשים בעיקר במבוגרים (ולתמ\"ש יש גם גרסאות לפי רמה/גיל); הם אינם פדיאטריים בלבד."
+   "התמ\"ש (WCPA) אכן בודק קוגניציה תפקודית, אך ה-EFPT אינו אבחון נוירופסיכולוגי — גם הוא כלי מבוסס-ביצוע (performance-based) להערכת תפקוד ניהולי. לכן ההיגד שגוי.",
+   "✓ נכון. התמ\"ש (WCPA) כולל קידוד מפורש של האסטרטגיות שבהן נעזר הנבדק, בעוד ה-EFPT מבוסס על מערכת רמזים מדורגת ומקודד את רמת הסיוע/הרמזים הנדרשת — ולא את האסטרטגיות.",
+   "הפוך — לתמ\"ש (WCPA) יש כמה גרסאות (A/B/C ונוסחים למבוגרים/מתבגרים), ולכן ההיגד שגוי.",
+   "אף אחד מהכלים אינו מוגבל לטווח הגילים שתואר; שניהם מיועדים בעיקר למבוגרים ואינם מוגדרים לפי הגילאים הללו."
   ],
-  "explanation": "התמ\"ש (LOTCA) מורכב מתת-מבחנים קוגניטיביים (תפיסה, אוריינטציה, חשיבה וכו') ויש לו גרסאות לפי רמה/גיל. ה-EFPT בוחן תפקודים ניהוליים דרך מטלות תפקודיות (כמו הכנת קפה) עם מערכת דירוג רמזים מובְנית — גישה תפקודית.",
-  "source": "שחזור קיץ 2025, שאלה 44 · LOTCA מול EFPT"
+  "explanation": "התמ\"ש הוא השם העברי ל-WCPA (Weekly Calendar Planning Activity, Toglia) — מטלה מבוססת-ביצוע להערכת תפקודים ניהוליים דרך תכנון לוח שבועי, המקודדת יעילות, דיוק, זמן ובעיקר את האסטרטגיות שבהן השתמש הנבדק. ה-EFPT (Executive Function Performance Test) אף הוא כלי מבוסס-ביצוע, אך מעריך תפקוד ניהולי דרך ארבע מטלות תפקודיות ומקודד את רמת הרמזים הנדרשת (מערכת cueing מדורגת), ולא אסטרטגיות. שני הכלים אינם LOTCA (סוללת תת-מבחנים קוגניטיבית).",
+  "source": "שחזור קיץ 2025, שאלה 44 · WCPA (תמ\"ש) מול EFPT"
  },
  {
   "id": "c15-02",
@@ -5442,27 +5434,6 @@ html[data-contrast="high"] :focus-visible{outline-width:4px;outline-offset:2px}
   ],
   "explanation": "המוקד הוא האינטראקציה החברתית בין הילדות ← השתתפות חברתית. האכילה עצמה היא ADL, אך ההקשר של ישיבה משותפת ושיחה מגדיר את העיסוק כהשתתפות חברתית.",
   "source": "שחזור קיץ 2025, שאלה 77 · המתע\"ם — תחומי עיסוק"
- },
- {
-  "id": "sh25-80",
-  "cluster": 4,
-  "q": "בטיפול התנהגותי בילד, איך נקרא המושג המתאר תגובה הניתנת לאחר התנהגות ומגדילה את הסיכוי שההתנהגות הרצויה תחזור בעתיד?",
-  "options": [
-   "חיזוק (Reinforcement)",
-   "עיצוב (Shaping)",
-   "ענישה (Punishment)",
-   "הכחדה (Extinction)"
-  ],
-  "answer": 0,
-  "dgroup": "c4-09",
-  "opt_why": [
-   "✓ נכון. תגובה לאחר התנהגות שמגדילה את הסיכוי שתחזור היא חיזוק.",
-   "עיצוב הוא חיזוק הדרגתי של קירובים להתנהגות יעד — מנגנון רחב, לא ההגדרה הישירה; מסיח קרוב כי גם הוא מעלה התנהגות.",
-   "ענישה מפחיתה את סבירות ההישנות — ההפך מהמתואר, אך מפתה כי גם היא תוצאה שאחרי ההתנהגות.",
-   "הכחדה היא הפסקת חיזוק המביאה לדעיכה — ההפך מהמתואר, מפתה כי גם היא נוגעת לתוצאות ההתנהגות."
-  ],
-  "explanation": "חיזוק הוא גירוי/תגובה הבא לאחר התנהגות ומגביר את הסבירות שתחזור. עיצוב הוא תהליך הדרגתי, ענישה מפחיתה התנהגות, והכחדה היא הפסקת חיזוק המביאה לדעיכה — מושגי התניה אופרנטית מתחרים.",
-  "source": "שחזור קיץ 2025, שאלה 80 · התניה אופרנטית — חיזוק"
  },
  {
   "id": "sh25-83",
@@ -17021,6 +16992,86 @@ html[data-contrast="high"] :focus-visible{outline-width:4px;outline-offset:2px}
   ],
   "explanation": "ה-VQ (Volitional Questionnaire) הוא כלי תצפיתי מבוסס-MOHO המעריך את הרצייה (volition) והמוטיבציה הפנימית של הלקוח דרך התבוננות בהתנהגותו במצבים שונים, ומתאים במיוחד למי שמתקשה בדיווח עצמי מילולי.",
   "source": "שחזור קיץ 2021 · שאלה 100"
+ },
+ {
+  "id": "c16-11",
+  "cluster": 16,
+  "q": "אבנר, פגוע חוט שדרה בגובה T4 (פגיעה מלאה), מתנייד בכיסא גלגלים ובעל תפקוד ידיים ואצבעות תקין. על איזו מהאסטרטגיות הבאות לא תמליץ לו המרפאה בעיסוק?",
+  "options": [
+   "לרכז את הפריטים הדרושים לו במקום אחד נגיש",
+   "להניח פריטים חשובים קרוב אליו, בהישג יד על השולחן",
+   "להתאים מקלדת המופעלת בתנועות עיניים במקום עכבר",
+   "לקבץ יחד חפצים הקשורים לאותה מטלה"
+  ],
+  "answer": 2,
+  "opt_why": [
+   "אסטרטגיית ארגון וחיסכון באנרגיה מקובלת ומומלצת.",
+   "קירוב פריטים אל הישג היד מפחית מאמץ ומקובל כהמלצה.",
+   "✓ נכון. מקלדת המופעלת בתנועות עיניים מיועדת למי שאינו יכול להשתמש בידיו (למשל טטרהפלגיה גבוהה או ALS). בפגיעת T4 תפקוד הידיים שמור לחלוטין — ולכן ההתאמה אינה נדרשת ואינה מומלצת.",
+   "קיבוץ חפצים לפי מטלה הוא עיקרון מקובל לארגון סביבה."
+  ],
+  "explanation": "בפגיעת חוט שדרה בגובה T4 הגפיים העליונות והידיים מתפקדות במלואן; הליקוי הוא בגו התחתון וברגליים. אסטרטגיות ארגון הסביבה וחיסכון באנרגיה (ריכוז וקירוב פריטים, קיבוץ לפי מטלה) רלוונטיות, אך טכנולוגיה מסייעת המחליפה תפקוד ידיים (מקלדת עיניים) מיועדת לפגיעות צוואריות גבוהות ואינה נדרשת כאן.",
+  "source": "שחזור קיץ 2025, שאלה 12 · פגיעת חוט שדרה — אסטרטגיות התאמה"
+ },
+ {
+  "id": "c12-16",
+  "cluster": 12,
+  "q": "על פי התאוריה של למידה מוטורית, כיצד תסווג פעילות של הכנת כריך?",
+  "options": [
+   "משימה בדידה",
+   "משימה מתמשכת",
+   "מטלה פתוחה",
+   "משימה סדרתית"
+  ],
+  "answer": 3,
+  "opt_why": [
+   "משימה בדידה היא פעולה בודדת בעלת התחלה וסוף מוגדרים (למשל לחיצה על מתג); הכנת כריך מורכבת מרצף פעולות, ולכן זהו המסיח הקרוב אך אינו מדויק.",
+   "משימה מתמשכת היא פעולה מחזורית ללא נקודת סיום ברורה (כמו הליכה או שחייה) — אינו מתאים.",
+   "סיווג פתוח/סגור מתייחס למידת הצפיוּת של הסביבה, ולא למבנה הפעולה עצמה.",
+   "✓ נכון. הכנת כריך היא רצף של פעולות בדידות נפרדות המבוצעות בסדר מוגדר (הוצאת לחם, מריחה, הרכבה) — הגדרה של משימה סדרתית (serial task)."
+  ],
+  "explanation": "בלמידה מוטורית מסווגים מטלות לפי מבנה הפעולה: בדידה (discrete) — פעולה בודדת עם התחלה וסוף; מתמשכת (continuous) — מחזורית ללא סוף מוגדר; סדרתית (serial) — שרשרת של פעולות בדידות ברצף מסודר. הכנת כריך היא מטלה סדרתית. סיווג פתוח/סגור מתייחס לרמת הצפיוּת של הסביבה ולא למבנה הפעולה.",
+  "source": "שחזור קיץ 2025, שאלה 37 · למידה מוטורית — סיווג מטלות"
+ },
+ {
+  "id": "c16-12",
+  "cluster": 16,
+  "q": "מהו המכנה המשותף לשלוש האמירות הבאות? (1) כדי להפחית העברות של המטופל, רוחצים אותו בשכיבה בעזרת ספוגיות רטובות; (2) חיתוך ירקות למרק בישיבה במקום בעמידה; (3) ביצוע קניות אונליין במקום פיזית.",
+  "options": [
+   "התאמה של החפצים לצורך הפעילות",
+   "התאמה של הסביבה",
+   "שינוי דרך הביצוע של הפעילות",
+   "דירוג המטלה"
+  ],
+  "answer": 2,
+  "opt_why": [
+   "לא נעשתה כאן התאמה או שינוי של החפצים/הכלים עצמם.",
+   "הסביבה הפיזית לא שונתה; מה שהשתנה הוא אופן ביצוע הפעילות בתוכה.",
+   "✓ נכון. בכל שלוש הדוגמאות המטלה נשמרת אך משתנה האופן שבו היא מבוצעת (רחצה בשכיבה, חיתוך בישיבה, קנייה אונליין) — כלומר שינוי דרך/שיטת הביצוע.",
+   "דירוג מטלה משנה את רמת הקושי בהדרגה — כאן לא מדורגת רמת הקושי אלא מוחלפת שיטת הביצוע."
+  ],
+  "explanation": "בטקסונומיה של התאמות בריפוי בעיסוק מבחינים בין: התאמת חפצים/כלים, התאמת סביבה, דירוג המטלה (שינוי הדרגתי של רמת הקושי) ושינוי דרך הביצוע (שמירת המטלה תוך שינוי האופן שבו היא מבוצעת). שלוש הדוגמאות משנות את שיטת הביצוע כדי לחסוך אנרגיה או להפחית עומס.",
+  "source": "שחזור קיץ 2025, שאלה 39 · התאמות — שינוי דרך ביצוע"
+ },
+ {
+  "id": "c1-19",
+  "cluster": 1,
+  "q": "איזה מהמושגים הבאים אינו מושג בסיסי בגישת PEOP?",
+  "options": [
+   "Performance (ביצוע עיסוקי)",
+   "Well-being (רווחה)",
+   "Health promotion (קידום בריאות)",
+   "Social support (תמיכה חברתית)"
+  ],
+  "answer": 2,
+  "opt_why": [
+   "ביצוע עיסוקי (Performance) הוא ה-P המרכזי במודל — אבן יסוד בו.",
+   "רווחה (Well-being) היא מתוצאות-העל שאליהן חותר PEOP.",
+   "✓ נכון. קידום בריאות (Health promotion) הוא תחום עשייה כללי בריפוי בעיסוק, אך אינו אחד ממושגי היסוד של מודל PEOP (אדם–סביבה–עיסוק–ביצוע ותוצאותיו).",
+   "תמיכה חברתית (Social support) נמנית עם גורמי הסביבה (Environment) במודל — ולכן מושג בסיסי בו."
+  ],
+  "explanation": "מודל PEOP (Person–Environment–Occupation–Performance; Baum, Christiansen & Bass) בנוי מהאדם, הסביבה, העיסוק והביצוע העיסוקי, וחותר לרווחה ולהשתתפות. תמיכה חברתית היא מרכיב סביבתי מוכר במודל; ביצוע ורווחה הם ליבתו ותוצאתו. קידום בריאות אינו מושג-יסוד של המודל אלא תחום פעולה כללי במקצוע.",
+  "source": "שחזור קיץ 2025, שאלה 29 · PEOP — מושגי יסוד"
  }
 ]</script>
 <script id="clusters-data" type="application/json">[{"id": 1, "weight": 8, "name": "מתע\"ם + מודלים (MOHO, CMOP, PEOP, ICF, אקולוגי)"}, {"id": 2, "weight": 6, "name": "שיטות מחקר + EBP + חשיבה קלינית והערכה/אבחון"}, {"id": 3, "weight": 5, "name": "בריאות הנפש: גישות + פסיכיאטריה מבוגרים"}, {"id": 4, "weight": 4, "name": "פסיכיאטריה של הילד והמתבגר"}, {"id": 5, "weight": 6, "name": "ילדים: התפתחות, משחק, קשיי התארגנות"}, {"id": 6, "weight": 6, "name": "עיבוד חושי + אינטגרציה סנסורית (SI)"}, {"id": 7, "weight": 4, "name": "לקויות למידה + כתיבה/דיסגרפיה"}, {"id": 8, "weight": 5, "name": "שיתוק מוחין (CP), פגים, נוירולוגיה התפתחותית"}, {"id": 9, "weight": 6, "name": "מוגבלויות פיזיות: לב-ריאה, ALS, כאב"}, {"id": 10, "weight": 7, "name": "גף עליון, מחלות יד, סדים, פרוטוקולי גידים"}, {"id": 11, "weight": 6, "name": "אורתופדיה (שברים/פריקות/דלקות) + קינזיולוגיה"}, {"id": 12, "weight": 6, "name": "נוירולוגיה: אירוע מוחי, חוט שדרה, נוירו׳ יישומית"}, {"id": 13, "weight": 6, "name": "שיקום קוגניטיבי + נוירופסיכולוגיה קלינית"}, {"id": 14, "weight": 5, "name": "גריאטריה, גרונטולוגיה, דמנציות"}, {"id": 15, "weight": 6, "name": "אבחונים וכלי הערכה (לאורך התחומים)"}, {"id": 16, "weight": 4, "name": "ארגונומיה, נגישות, התאמת דיור, טכנולוגיה מסייעת"}, {"id": 17, "weight": 5, "name": "אתיקה רפואית + חוקים"}, {"id": 18, "weight": 5, "name": "ניירות עמדה + טבלת גישות 2024"}]</script>
@@ -17447,14 +17498,23 @@ function renderHome(){
 
   /* resume unfinished practice — top priority */
   const _rs=STATE.resume;
-  if(_rs && _rs.qids && _rs.i < _rs.qids.length){
-    const cont=el(`<section class="card" style="border:1px solid color-mix(in srgb,var(--primary) 50%,transparent);display:flex;align-items:center;gap:12px">
-      <span style="font-size:1.7rem" aria-hidden="true">⏯️</span>
-      <div style="flex:1;min-width:0"><div style="font-weight:800">המשך תרגול: ${esc(_rs.title)}</div>
-      <div class="muted" style="font-size:.86rem">עצרת בשאלה ${_rs.i+1} מתוך ${_rs.qids.length} — המשיכי מאיפה שהפסקת</div></div>
-      <button class="btn" id="resumeBtn">המשך →</button></section>`);
-    cont.querySelector('#resumeBtn').onclick=()=>resumePractice(STATE.resume);
-    _side.appendChild(cont);
+  if(_rs && _rs.qids){
+    /* count only saved ids that still exist — bank edits can rename/remove ids, so the live
+       session may be shorter than _rs.qids.length. Show the number that will ACTUALLY load. */
+    const _ids=new Set(BANK.map(q=>q.id));
+    const _liveN=_rs.qids.filter(id=>_ids.has(id)).length;
+    if(_liveN>0 && _rs.i < _rs.qids.length){
+      const _pos=Math.min(_rs.i+1,_liveN);
+      const cont=el(`<section class="card" style="border:1px solid color-mix(in srgb,var(--primary) 50%,transparent);display:flex;align-items:center;gap:12px">
+        <span style="font-size:1.7rem" aria-hidden="true">⏯️</span>
+        <div style="flex:1;min-width:0"><div style="font-weight:800">המשך תרגול: ${esc(_rs.title)}</div>
+        <div class="muted" style="font-size:.86rem">עצרת בשאלה ${_pos} מתוך ${_liveN} — המשיכי מאיפה שהפסקת</div></div>
+        <button class="btn" id="resumeBtn">המשך →</button></section>`);
+      cont.querySelector('#resumeBtn').onclick=()=>resumePractice(STATE.resume);
+      _side.appendChild(cont);
+    } else if(_liveN===0){
+      STATE.resume=null; saveState(STATE); /* stale resume — none of the saved ids exist anymore */
+    }
   }
 
   /* due-today CTA — highest-priority action when reviews are due */
@@ -17733,7 +17793,9 @@ function orderFresh(pool){                /* exam/mixed: un-answered first, answ
 function startTopic(cid){
   const r=STATE.resume;
   if(r && r.mode==='topic' && r.cluster===cid && r.i<(r.qids||[]).length){
-    if(confirm(`יש תרגול שלא הושלם בנושא זה — עצרת בשאלה ${r.i+1} מתוך ${r.qids.length}.\nאישור = המשך מאיפה שעצרת · ביטול = התחלה מחדש`))
+    const _ids=new Set(BANK.map(q=>q.id));
+    const _liveN=r.qids.filter(id=>_ids.has(id)).length;
+    if(_liveN>0 && confirm(`יש תרגול שלא הושלם בנושא זה — עצרת בשאלה ${Math.min(r.i+1,_liveN)} מתוך ${_liveN}.\nאישור = המשך מאיפה שעצרת · ביטול = התחלה מחדש`))
       return resumePractice(r);
     STATE.resume=null; saveState(STATE);
   }
@@ -17749,56 +17811,181 @@ function startMistakes(){
   if(!qs.length){toast('אין שאלות לחזרה היום — עבודה יפה!');return renderMistakes();}
   runPractice(qs,'מאגר טעויות',{mistakes:true});
 }
+function startAllMistakes(){
+  const ids=new Set(learningIds());
+  const qs=BANK.filter(q=>ids.has(q.id));
+  qs.sort((a,b)=>{const sa=STATE.srs[a.id]||{},sb=STATE.srs[b.id]||{}; return ((sb.wrongCount||0)-(sa.wrongCount||0));});
+  if(!qs.length){toast('אין טעויות לתרגול כרגע');return;}
+  runPractice(qs,'כל הטעויות',{mistakes:true});
+}
 function renderMistakes(){
-  const now=Date.now();
   const due=mistakeIds(), learn=learningIds(), mastered=masteredIds();
-  const node=el('<div class="stack"></div>');
-  const head=el(`<section class="card">
-    <div class="qtop"><button class="btn ghost" id="bk">→ חזרה</button><span class="sp" style="flex:1"></span><span class="chip teal">חזרה מרווחת · SRS</span></div>
-    <h1 style="margin-top:12px">מאגר הטעויות שלי</h1>
-    <p class="muted" style="margin:6px 0 0">חזרה מרווחת חכמה: כל תשובה נכונה דוחה את השאלה למרווח ארוך יותר (יום ← 3 ← 8 ← 21). כך זוכרים לטווח ארוך.</p>
-    <div class="stats" style="margin-top:14px">
-      <div class="stat" style="color:${due.length?'var(--bad)':'var(--ok)'}"><b>${due.length}</b><span>לחזרה היום</span></div>
-      <div class="stat"><b>${Math.max(0,learn.length-due.length)}</b><span>מתוזמנות</span></div>
-      <div class="stat" style="color:var(--ok)"><b>${mastered.length}</b><span>נשלטו ✓</span></div>
-    </div></section>`);
-  head.querySelector('#bk').onclick=renderHome;
-  if(due.length){
-    const b=el(`<button class="btn wide" style="margin-top:14px">▶ תרגל ${due.length} שאלות לחזרה היום</button>`);
-    b.onclick=startMistakes; head.appendChild(b);
-  } else {
-    head.appendChild(el(`<div class="tipbox good" style="margin-top:14px"><b>${learn.length||mastered.length?'כל הכבוד — אין שאלות לחזרה היום!':'אין עדיין טעויות במאגר'}</b><div class="muted" style="font-size:.9rem">${learn.length?'חזרי מחר להמשך החזרה, או תרגלי נושא חדש.':'ברגע שתטעי בשאלה, היא תופיע כאן לחזרה מרווחת.'}</div></div>`));
+  const byDay=dailyMistakeLog();
+  const hasDaily=Object.keys(byDay).length>0;
+  let weekOffset=0, openKey=null;
+  const today=new Date(), thisWeekStart=_startOfWeek(today);
+  const dayNames=['א','ב','ג','ד','ה','ו','ש'];
+  function practiceDay(key){
+    const day=byDay[key]; if(!day)return;
+    const qs=Object.keys(day.byId).map(id=>BANK.find(q=>q.id===id)).filter(Boolean);
+    if(!qs.length)return;
+    runPractice(qs,'טעויות · '+new Date(day.ts).toLocaleDateString('he-IL',{day:'numeric',month:'numeric'}),{mistakes:true});
   }
-  node.appendChild(head);
-  const td=trapData();
-  if(td.totalPicks){
-    const ab=el(`<button class="btn secondary" style="width:100%;justify-content:center">🔍 ניתוח מסיחים${td.traps.length?` · ${td.traps.length} מלכודות חוזרות`:''}</button>`);
-    ab.onclick=renderTrapAnalysis; node.appendChild(ab);
-  }
-  if(learn.length){
-    const rows=learn.map(id=>({q:BANK.find(x=>x.id===id), s:STATE.srs[id]})).filter(r=>r.q);
-    rows.sort((a,b)=> ((a.s.due||0)-(b.s.due||0)) || ((b.s.wrongCount||0)-(a.s.wrongCount||0)));
-    const sec=el(`<section class="card"><h2>בלמידה (${rows.length})</h2><p class="muted" style="margin:2px 0 10px">ממוין לפי דחיפות · 🔴 לחזרה היום · 🐞 נכשלה הרבה</p><div class="breakdown" id="ls"></div></section>`);
-    const ls=sec.querySelector('#ls');
-    rows.forEach(r=>{
-      const dueNow=(r.s.due==null)||r.s.due<=now;
-      const days=dueNow?0:Math.ceil((r.s.due-now)/SRS_DAY);
-      const acc=r.s.seen?Math.round((r.s.correct||0)/r.s.seen*100):0;
-      const leech=(r.s.wrongCount||0)>=5;
-      const qtext=r.q.q.length>74?r.q.q.slice(0,74)+'…':r.q.q;
-      const status=dueNow?'<span class="chip red">🔴 היום</span>':`<span class="chip teal">בעוד ${days} ימים</span>`;
-      const src=(r.s.miss&&r.s.miss.title)?` · ${esc(r.s.miss.title)}`:'';
-      const row=el(`<div class="brow" role="button" tabindex="0" style="cursor:pointer"><div class="h"><span style="font-weight:600;line-height:1.4">${esc(qtext)}</span>${status}</div>
-        <div class="faint" style="font-size:.8rem;margin-top:6px">אשכול ${r.q.cluster} · טעויות: ${r.s.wrongCount||0} · דיוק ${acc}%${src}${leech?' · 🐞 דורשת תשומת לב':''} · הצצה ›</div></div>`);
-      const open=()=>renderQuestionReview(r.q.id, renderMistakes);
+  function dayDetail(key,day){
+    const items=Object.keys(day.byId).map(id=>day.byId[id]);
+    const d=new Date(day.ts);
+    const dateLabel=d.toLocaleDateString('he-IL',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+    const byCl={}; items.forEach(it=>{const c=it.q.cluster; byCl[c]=(byCl[c]||0)+1;});
+    const chips=Object.keys(byCl).sort((a,b)=>byCl[b]-byCl[a]).map(c=>{
+      const nm=(CL_BY_ID[c]&&CL_BY_ID[c].name)||('אשכול '+c);
+      return `<span class="chip" style="margin:0 0 4px 4px">${esc(nm)} · ${byCl[c]}</span>`;
+    }).join('');
+    const sec=el(`<section class="card" style="border:1px solid color-mix(in srgb,var(--primary) 45%,transparent)">
+      <div class="h" style="display:flex;align-items:center;gap:8px;justify-content:space-between"><h2 style="margin:0">${dateLabel}</h2><span class="chip red">${items.length} טעויות</span></div>
+      <div class="faint" style="font-size:.82rem;margin:8px 0 4px">נושאים שעברת עליהם ביום זה:</div>
+      <div style="margin-bottom:12px">${chips}</div>
+      <button class="btn wide" id="pd" style="margin-bottom:12px">🔁 תרגל את ${items.length} הטעויות של יום זה</button>
+      <div class="breakdown" id="dl"></div></section>`);
+    sec.querySelector('#pd').onclick=()=>practiceDay(key);
+    const dl=sec.querySelector('#dl');
+    items.forEach(it=>{
+      const nm=(CL_BY_ID[it.q.cluster]&&CL_BY_ID[it.q.cluster].name)||('אשכול '+it.q.cluster);
+      const qtext=it.q.q.length>74?it.q.q.slice(0,74)+'…':it.q.q;
+      const row=el(`<div class="brow" role="button" tabindex="0" style="cursor:pointer"><div class="h"><span style="font-weight:600;line-height:1.4">${esc(qtext)}</span><span class="chip">${esc(nm)}</span></div>
+        <div class="faint" style="font-size:.8rem;margin-top:6px">מקור: ${esc(it.from)} · הצצה ›</div></div>`);
+      const open=()=>renderQuestionReview(it.q.id, renderMistakes);
       row.onclick=open; row.onkeydown=(e)=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open();}};
-      ls.appendChild(row);
+      dl.appendChild(row);
     });
-    node.appendChild(sec);
+    return sec;
   }
-  setScreen(node,'mistakes');
+  function draw(){
+    const node=el('<div class="stack"></div>');
+    const head=el(`<section class="card">
+      <div class="qtop"><button class="btn ghost" id="bk">→ חזרה</button><span class="sp" style="flex:1"></span><span class="chip teal">חזרה מרווחת · SRS</span></div>
+      <h1 style="margin-top:12px">מאגר הטעויות שלי</h1>
+      <p class="muted" style="margin:6px 0 0">חזרה מרווחת חכמה: כל תשובה נכונה דוחה את השאלה למרווח ארוך יותר (יום ← 3 ← 8 ← 21).</p>
+      <div class="stats" style="margin-top:14px">
+        <div class="stat" style="color:${due.length?'var(--bad)':'var(--ok)'}"><b>${due.length}</b><span>לחזרה היום</span></div>
+        <div class="stat"><b>${Math.max(0,learn.length-due.length)}</b><span>מתוזמנות</span></div>
+        <div class="stat" style="color:var(--ok)"><b>${mastered.length}</b><span>נשלטו ✓</span></div>
+      </div></section>`);
+    head.querySelector('#bk').onclick=renderHome;
+    if(due.length){
+      const b=el(`<button class="btn wide" style="margin-top:14px">▶ תרגל ${due.length} שאלות לחזרה היום</button>`);
+      b.onclick=startMistakes; head.appendChild(b);
+    } else {
+      head.appendChild(el(`<div class="tipbox good" style="margin-top:14px"><b>${learn.length||mastered.length?'כל הכבוד — אין שאלות לחזרה היום!':'אין עדיין טעויות במאגר'}</b><div class="muted" style="font-size:.9rem">${learn.length?'חזרי מחר להמשך החזרה, או תרגלי מחדש למטה.':'ברגע שתטעי בשאלה, היא תופיע כאן לחזרה מרווחת.'}</div></div>`));
+    }
+    if(learn.length){
+      const allb=el(`<button class="btn secondary wide" style="margin-top:10px">🔁 חזרה על כל הטעויות (${learn.length})</button>`);
+      allb.onclick=startAllMistakes; head.appendChild(allb);
+    }
+    node.appendChild(head);
+    const td=trapData();
+    if(td.totalPicks){
+      const ab=el(`<button class="btn secondary" style="width:100%;justify-content:center">🔍 ניתוח מסיחים${td.traps.length?` · ${td.traps.length} מלכודות חוזרות`:''}</button>`);
+      ab.onclick=renderTrapAnalysis; node.appendChild(ab);
+    }
+    if(!hasDaily){ setScreen(node,'mistakes'); return; }
+
+    /* ---------- weekly board (replaces the old flat list) ---------- */
+    const weekStart=new Date(thisWeekStart.getTime()+weekOffset*7*_MS_DAY);
+    const weekEnd=new Date(weekStart.getTime()+6*_MS_DAY);
+    const board=el('<section class="card"></section>');
+    board.appendChild(el('<h2 style="margin:0 0 12px">טעויות לפי יום</h2>'));
+    const rangeLbl=weekStart.toLocaleDateString('he-IL',{day:'numeric',month:'numeric'})+'–'+weekEnd.toLocaleDateString('he-IL',{day:'numeric',month:'numeric'});
+    const navRow=el(`<div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
+      <button class="btn ghost" id="prevW" style="padding:5px 11px">‹ שבוע קודם</button>
+      <b style="flex:1;text-align:center">${weekOffset===0?'השבוע · '+rangeLbl:rangeLbl}</b>
+      <button class="btn ghost" id="nextW" style="padding:5px 11px" ${weekOffset>=0?'disabled':''}>שבוע הבא ›</button>
+    </div>`);
+    board.appendChild(navRow);
+    const grid=el('<div style="display:grid;grid-template-columns:repeat(7,1fr);gap:6px"></div>');
+    let weekTotal=0, hardest=null;
+    for(let i=0;i<7;i++){
+      const d=new Date(weekStart.getTime()+i*_MS_DAY);
+      const key=_ymd(d); const day=byDay[key]; const cnt=_dayCount(day);
+      weekTotal+=cnt;
+      if(cnt>0 && (!hardest||cnt>hardest.cnt)) hardest={name:dayNames[i],cnt};
+      const h=_heat(cnt, day&&day.practiced);
+      const isFuture=d>today;
+      const tile=el(`<button class="daytile" style="border:none;border-radius:12px;padding:11px 4px;background:${h[0]};color:${h[1]};display:flex;flex-direction:column;align-items:center;gap:3px;cursor:${cnt>0?'pointer':'default'};opacity:${isFuture?0.35:1};${openKey===key?'outline:2px solid var(--primary);outline-offset:1px':''}">
+        <span style="font-size:.72rem;font-weight:700;opacity:.85">${dayNames[i]}'</span>
+        <span style="font-size:1.2rem;font-weight:800;line-height:1">${h[2]}</span>
+        <span style="font-size:.6rem;opacity:.7">${d.getDate()}/${d.getMonth()+1}</span>
+      </button>`);
+      if(cnt>0) tile.onclick=()=>{ openKey=(openKey===key?null:key); draw(); };
+      grid.appendChild(tile);
+    }
+    board.appendChild(grid);
+    const prevStart=new Date(weekStart.getTime()-7*_MS_DAY);
+    let prevTotal=0; for(let i=0;i<7;i++) prevTotal+=_dayCount(byDay[_ymd(new Date(prevStart.getTime()+i*_MS_DAY))]);
+    const trend = weekTotal<prevTotal?'📉 פחות משבוע שעבר':weekTotal>prevTotal?'📈 יותר משבוע שעבר':'≈ כמו שבוע שעבר';
+    board.appendChild(el(`<div class="faint" style="font-size:.82rem;margin-top:12px;text-align:center;line-height:1.7">סה"כ טעויות השבוע: <b style="color:var(--text)">${weekTotal}</b>${hardest?` · הכי קשה: יום ${hardest.name}'`:''}${(prevTotal||weekTotal)?' · '+trend:''}</div>`));
+    node.appendChild(board);
+
+    if(openKey && byDay[openKey]) node.appendChild(dayDetail(openKey, byDay[openKey]));
+
+    /* ---------- mini heatmap: last 8 weeks ---------- */
+    const hm=el('<section class="card"></section>');
+    hm.appendChild(el('<h2 style="margin:0 0 2px">מגמה — 8 שבועות אחרונים</h2><p class="faint" style="font-size:.78rem;margin:0 0 10px">כל ריבוע = יום · כהה יותר = יותר טעויות · לחיצה קופצת לשבוע.</p>'));
+    const hmGrid=el('<div style="display:flex;flex-direction:column;gap:4px"></div>');
+    const dowHdr=el('<div style="display:flex;gap:4px;align-items:center"><span style="width:38px"></span></div>');
+    dayNames.forEach(n=>dowHdr.appendChild(el(`<span class="faint" style="width:15px;text-align:center;font-size:.6rem">${n}</span>`)));
+    hmGrid.appendChild(dowHdr);
+    for(let w=7;w>=0;w--){
+      const wStart=new Date(thisWeekStart.getTime()-w*7*_MS_DAY);
+      const rowWrap=el('<div style="display:flex;gap:4px;align-items:center"></div>');
+      rowWrap.appendChild(el(`<span class="faint" style="font-size:.6rem;width:38px;text-align:left">${wStart.toLocaleDateString('he-IL',{day:'numeric',month:'numeric'})}</span>`));
+      for(let i=0;i<7;i++){
+        const d=new Date(wStart.getTime()+i*_MS_DAY);
+        const day=byDay[_ymd(d)]; const cnt=_dayCount(day);
+        const h=_heat(cnt, day&&day.practiced);
+        const off=-w;
+        const cell=el(`<span title="${d.getDate()}/${d.getMonth()+1}: ${cnt} טעויות" style="width:15px;height:15px;border-radius:4px;background:${h[0]};cursor:pointer;display:inline-block;${d>today?'opacity:.3':''}"></span>`);
+        cell.onclick=()=>{ weekOffset=off; openKey=cnt>0?_ymd(d):null; draw(); window.scrollTo({top:0,behavior:'smooth'}); };
+        rowWrap.appendChild(cell);
+      }
+      hmGrid.appendChild(rowWrap);
+    }
+    hm.appendChild(hmGrid);
+    node.appendChild(hm);
+
+    navRow.querySelector('#prevW').onclick=()=>{ weekOffset--; openKey=null; draw(); };
+    const nb=navRow.querySelector('#nextW'); if(nb && weekOffset<0) nb.onclick=()=>{ weekOffset++; openKey=null; draw(); };
+    setScreen(node,'mistakes');
+  }
+  draw();
 }
 
+/* ===================== MISTAKES DASHBOARD (weekly board + heatmap) ===================== */
+const _MS_DAY=86400000;
+function _ymd(d){ return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
+function _startOfWeek(d){ const x=new Date(d.getFullYear(),d.getMonth(),d.getDate()); x.setDate(x.getDate()-x.getDay()); return x; } /* Sunday start */
+/* per-calendar-day log: mistakes + whether any practice happened that day */
+function dailyMistakeLog(){
+  const byDay={};
+  (STATE.history||[]).forEach(h=>{
+    const d=new Date(h.t); const key=_ymd(d);
+    const day=byDay[key]||(byDay[key]={ts:h.t, byId:{}, practiced:false});
+    day.practiced=true; if(h.t>day.ts)day.ts=h.t;
+    if(h.wrong&&h.wrong.length){
+      const from=h.mode==='exam'?'מבחן מלא':(h.title||'תרגול');
+      h.wrong.forEach(w=>{ const q=BANK.find(x=>x.id===w.id); if(q) day.byId[w.id]={q,oi:w.oi,from}; });
+    }
+  });
+  return byDay;
+}
+function _dayCount(day){ return day?Object.keys(day.byId).length:0; }
+/* heat style by mistake count: [bgCss, fgCss, badge] */
+function _heat(count, practiced){
+  if(count>=5) return ['color-mix(in srgb,var(--bad) 58%,var(--surface))','#fff', count];
+  if(count>=3) return ['color-mix(in srgb,var(--bad) 34%,var(--surface))','var(--text)', count];
+  if(count>=1) return ['color-mix(in srgb,var(--warn) 28%,var(--surface))','var(--text)', count];
+  if(practiced) return ['var(--ok-bg)','var(--ok)','✓'];
+  return ['var(--surface-2)','var(--faint)','–'];
+}
 /* ===================== DISTRACTOR ANALYTICS ===================== */
 /* aggregate which wrong options were chosen, per question */
 function trapData(){
@@ -18104,7 +18291,7 @@ function buildCustomSet(clusters, size, source){
   return shuffle(dedup).slice(0, size);
 }
 function renderCustomExam(){
-  const sel=new Set(CLUSTERS.map(c=>c.id));
+  const sel=new Set(); /* start empty: the user taps the topics she wants. (was pre-selecting ALL, so tapping a topic de-selected it → exam came from the other topics) */
   let source='all', style='real', size=40;
   const avail=()=>{ let n=0; sel.forEach(cid=>n+=clusterPoolCount(cid,source)); return n; };
   function draw(){
@@ -18145,7 +18332,8 @@ function renderCustomExam(){
     const cntCard=el('<section class="card"></section>');
     cntCard.appendChild(el(`<div style="display:flex;align-items:center;gap:8px"><h2 style="margin:0;flex:1">מספר שאלות</h2><span class="faint" style="font-size:.82rem">זמין: ${max}</span></div>`));
     if(max===0){
-      cntCard.appendChild(el('<p class="muted" style="margin:8px 0 0">אין שאלות זמינות לבחירה הנוכחית. בחרי אשכולות נוספים או מקור אחר.</p>'));
+      const msg = sel.size===0 ? '👆 בחרי אשכול אחד או יותר מהרשימה למעלה כדי להתחיל.' : 'אין שאלות זמינות לבחירה הנוכחית. בחרי אשכולות נוספים או מקור אחר.';
+      cntCard.appendChild(el('<p class="muted" style="margin:8px 0 0">'+msg+'</p>'));
     } else {
       const rw=el('<div class="rangewrap"></div>');
       const val=el(`<span class="rangeval">${size}</span>`);
