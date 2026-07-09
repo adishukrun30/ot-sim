@@ -354,6 +354,22 @@ details.gacc[open]>summary{border-bottom:1px solid var(--border)}
 .cmp-tables th,.cmp-tables td{border:1px solid var(--border);padding:7px 9px;text-align:start;vertical-align:top}
 .cmp-tables th{background:var(--surface-2);font-weight:800;color:var(--primary-d)}
 .cmp-tables h4{margin:14px 0 4px;color:var(--text)}
+.appr-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px;margin-top:8px}
+.appr-card{position:relative;text-align:start;width:100%;font-family:inherit;color:var(--text);background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:15px 17px 15px 20px;cursor:pointer;box-shadow:var(--shadow-s);transition:transform .12s var(--ease),box-shadow .16s var(--ease),border-color .16s;overflow:hidden;display:flex;flex-direction:column;gap:3px}
+.appr-card:hover{transform:translateY(-2px);box-shadow:var(--shadow);border-color:var(--acc)}
+.appr-card::before{content:"";position:absolute;inset-inline-start:0;top:0;bottom:0;width:5px;background:var(--acc)}
+.appr-card .an{font-weight:800;font-size:1rem;line-height:1.35}
+.appr-card .as{color:var(--muted);font-size:.83rem;line-height:1.4}
+.appr-card .ab{margin-top:8px;display:flex;flex-wrap:wrap;gap:5px}
+.appr-card .ab .appr-badge{margin:0}
+.appr-modal{position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.58);display:flex;align-items:flex-start;justify-content:center;padding:22px 12px;overflow-y:auto;animation:fadeIn .14s ease}
+.appr-modal-box{background:var(--surface);border-radius:18px;max-width:640px;width:100%;margin:auto;padding:20px 22px;box-shadow:var(--shadow-l);border-top:5px solid var(--acc)}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.hm-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;margin-top:6px}
+.hm-tile{position:relative;text-align:start;font-family:inherit;color:var(--text);border:1px solid var(--border);border-inline-start:4px solid var(--c);border-radius:12px;padding:11px 12px;cursor:pointer;display:flex;flex-direction:column;gap:4px;transition:transform .1s var(--ease),box-shadow .15s var(--ease)}
+.hm-tile:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.hm-name{font-size:.82rem;font-weight:700;line-height:1.25}
+.hm-val{font-size:1.15rem;font-weight:800}
 .fcard{margin-top:14px;border:1px solid var(--border);border-radius:18px;background:var(--surface-2);min-height:230px;
   display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px 20px;text-align:center;
   cursor:pointer;position:relative;transition:transform .1s ease, border-color .2s;box-shadow:var(--shadow-s)}
@@ -8554,21 +8570,21 @@ html[data-contrast="high"] :focus-visible{outline-width:4px;outline-offset:2px}
  {
   "id": "r23-67",
   "cluster": 1,
-  "q": "בתצפית על ילד בגן נמצא קושי במיומנות התהליך 'משנה ומתאם' (adapts). מה צפוי להיראות בילד?",
+  "q": "בתצפית על ילד בגן נראה שכאשר הוא נתקל בקושי או בטעות תוך כדי משימה, הוא אינו מתקן את עצמו ואינו גמיש בדרך הביצוע — אלא ממשיך באותה צורה שאינה מקדמת אותו. באיזו מיומנות תהליך (process skill) הוא מתקשה?",
   "options": [
-   "מתקשה לשנות התנהלות או פעילות בתגובה לבעיות תוך כדי ביצוע",
-   "מתקשה לבצע את שלבי הפעילות ברצף הגיוני (קושי ב'מרצף')",
-   "מתקשה לאתר ולהשתמש בחפצים המתאימים למשימה (קושי ב'בוחר/משתמש')",
-   "מתקשה לשמור על קצב וזרימה ללא הפסקות מיותרות (קושי ב'מתמיד/מקצב')"
+   "מרצף (Sequences)",
+   "בוחר ומשתמש (Chooses & Uses)",
+   "משנה ומתאם (Adapts)",
+   "מתמיד ומקצב (Continues & Paces)"
   ],
-  "answer": 0,
+  "answer": 2,
   "opt_why": [
-   "✓ נכון. מיומנות 'משנה ומתאם' (adapts) עוסקת בהתאמת ההתנהגות/הסביבה/הפעילות בתגובה לבעיות; קושי בה מתבטא בחוסר יכולת לבצע התאמות אלו.",
-   "קושי ברצף הגיוני שייך למיומנות 'מרצף/מסדר' (sequences); מפתה כי גם הוא מיומנות תהליך, אך אינו ה'משנה ומתאם'.",
-   "קושי באיתור/שימוש בחפצים שייך למיומנויות 'בוחר/משתמש/מטפל'; מפתה כמיומנות תהליך קרובה, אך אינו ההתאמה לבעיות תוך כדי ביצוע.",
-   "קושי בקצב ובזרימה שייך ל'מתמיד/מקצב' (paces/continues); מפתה כמיומנות תהליך, אך אינו עוסק בהתאמה גמישה לבעיה."
+   "'מרצף' (sequences) עוסק בביצוע שלבי הפעילות בסדר הגיוני ויעיל — לא בגמישות ובתיקון תוך כדי ביצוע.",
+   "'בוחר ומשתמש' (chooses & uses) עוסק באיתור ובחירת החפצים/הכלים המתאימים למשימה — לא בהסתגלות לבעיה.",
+   "✓ נכון. 'משנה ומתאם' (adapts) היא היכולת לזהות בעיה תוך כדי ביצוע ולתקן או לשנות בהתאם — התנהגות, סביבה או דרך פעולה — כדי להתגבר עליה. ילד שאינו גמיש וממשיך בדרך שאינה עובדת מדגים קושי במיומנות זו.",
+   "'מתמיד ומקצב' (continues & paces) עוסק בשמירה על קצב, זרימה והתמדה עד סיום — לא בשינוי דרך הפעולה בתגובה לקושי."
   ],
-  "explanation": "מיומנות התהליך 'משנה ומתאם' (adapts) היא היכולת לשנות את ההתנהגות, הסביבה או הפעילות בתגובה לבעיות המתעוררות תוך כדי ביצוע. המסיחים מתארים קשיים במיומנויות תהליך סמוכות (מרצף, בוחר/משתמש, מתמיד/מקצב) — בלבול קליני אמיתי בין מיומנויות שונות באותו אשכול.",
+  "explanation": "מיומנויות התהליך (process skills) מתארות כיצד אדם מבצע ומנהל פעולות ומשימות. 'משנה ומתאם' (adapts) = היכולת לזהות בעיה תוך כדי ביצוע ולתקן/לשנות בהתאם (התנהגות, סביבה או פעילות) כדי להתגבר עליה. שאר המיומנויות: 'מרצף' — סדר הגיוני של שלבים; 'בוחר ומשתמש' — בחירת הכלים הנכונים; 'מתמיד ומקצב' — שמירה על קצב וזרימה עד הסיום.",
   "source": "שחזור קיץ 2023 · שאלה 67"
  },
  {
@@ -17606,7 +17622,8 @@ function renderHome(){
     const list=el('<div class="stack" style="margin-top:6px"></div>');
     STATE.history.slice(-5).reverse().forEach(h=>{
       const d=new Date(h.t);
-      const nWrong=('wrong' in h)?(h.wrong?h.wrong.length:0):null;
+      /* mistake count from score (total-correct) is always accurate; wrong[] detail may be shorter for old resumed sessions */
+      const nWrong=(typeof h.correct==='number'&&typeof h.total==='number')?(h.total-h.correct):(('wrong' in h)?(h.wrong?h.wrong.length:0):null);
       const hint = nWrong===null ? '' : (nWrong? `<span class="chip red" style="font-size:.7rem">${nWrong} טעויות ›</span>` : `<span class="chip green" style="font-size:.7rem">ללא טעויות</span>`);
       const row=el(`<div class="brow" role="button" tabindex="0" style="cursor:pointer"><div class="h"><span>${h.mode==='exam'?'מבחן מלא':(h.title||'תרגול')}<br><span class="faint" style="font-size:.8rem">${d.toLocaleDateString('he-IL')} ${d.toLocaleTimeString('he-IL',{hour:'2-digit',minute:'2-digit'})}</span></span><span style="display:flex;gap:6px;align-items:center">${hint}<span class="chip ${clusterColor(h.score)}">${h.score}% · ${h.correct}/${h.total}</span></span></div></div>`);
       const open=()=>renderSessionReview(h);
@@ -17704,11 +17721,20 @@ function renderProgress(){
   sum.appendChild(mini);
   node.appendChild(sum);
 
-  // radar (spider) chart — mastery shape across all 18 clusters at a glance
+  // mastery heatmap — color-coded topic map (replaced the hard-to-read radar)
   const rc=el('<div class="card stack"></div>');
-  rc.appendChild(el('<h2 style="margin:0 0 2px">מפת שליטה — מכ״ם</h2>'));
-  rc.appendChild(el('<p class="faint" style="font-size:.8rem;margin:0 0 4px">כל קודקוד הוא אשכול (1–18) · רחוק מהמרכז = שליטה גבוהה יותר · אפור = טרם תורגל</p>'));
-  rc.appendChild(el('<div class="chartwrap" style="max-width:360px;margin:0 auto">'+radarSVG(rows)+'</div>'));
+  rc.appendChild(el('<h2 style="margin:0 0 2px">מפת שליטה</h2>'));
+  rc.appendChild(el('<p class="faint" style="font-size:.8rem;margin:0 0 4px">כל נושא צבוע לפי אחוז ההצלחה · 🟢 ≥75% · 🟠 50–74% · 🔴 &lt;50% · אפור = טרם תורגל · לחצי על נושא לתרגול</p>'));
+  const hmGrid=el('<div class="hm-grid"></div>');
+  rows.forEach(r=>{
+    const col=r.practiced?clusterColorHex(r.pct):'var(--faint)';
+    const bg=r.practiced?`color-mix(in srgb,${clusterColorHex(r.pct)} 15%,var(--surface))`:'var(--surface-2)';
+    const val=r.practiced?r.pct+'%':'טרם';
+    const t=el(`<button class="hm-tile" style="--c:${col};background:${bg}"><span class="hm-name">${clIcon(r.c.id)} ${esc(r.c.name)}</span><span class="hm-val" style="color:${col}">${val}</span></button>`);
+    t.onclick=()=>startTopic(r.c.id);
+    hmGrid.appendChild(t);
+  });
+  rc.appendChild(hmGrid);
   node.appendChild(rc);
 
   // progress-over-time chart
@@ -17801,7 +17827,7 @@ function resumePractice(r){
   const qs=(r.qids||[]).map(id=>BANK.find(q=>q.id===id)).filter(Boolean);
   if(!qs.length){ STATE.resume=null; saveState(STATE); return toast('לא ניתן לשחזר את התרגול'); }
   runPractice(qs, r.title, {cluster:r.cluster, mixed:r.mixed, mistakes:r.mistakes,
-    resumeFrom:{i:Math.min(r.i,qs.length), correct:r.correct, answered:r.answered}});
+    resumeFrom:{i:Math.min(r.i,qs.length), correct:r.correct, answered:r.answered, wrong:r.wrong}});
 }
 /* ---- "skip already-answered" helpers ---- */
 function qAnswered(q){ return !!(STATE.answered && STATE.answered[q.id]); }
@@ -18085,10 +18111,11 @@ function runPractice(questions, title, opts){
   let i=rf?Math.min(rf.i,questions.length):0, correct=rf?rf.correct:0, answered=rf?rf.answered:0;
   const flags=new Array(questions.length).fill(false);
   questions.forEach((q,idx)=>{if(STATE.flags[q.id])flags[idx]=true;});
-  const wrongLog=[]; /* {id, oi} of each question answered wrong — saved to history for later review */
+  /* restore wrongLog on resume too — else resumed sessions lose pre-resume mistakes while correct/answered stay cumulative (score said 62/69 but only 3 mistakes shown) */
+  const wrongLog=rf&&rf.wrong?rf.wrong.slice():[]; /* {id, oi} of each question answered wrong — saved to history for later review */
   function persist(){
     STATE.resume={mode,cluster:opts.cluster,mixed:!!opts.mixed,mistakes:!!opts.mistakes,
-      title,qids:questions.map(q=>q.id),i,correct,answered,ts:Date.now()};
+      title,qids:questions.map(q=>q.id),i,correct,answered,wrong:wrongLog,ts:Date.now()};
     saveState(STATE);
   }
   function render(){
@@ -18427,6 +18454,8 @@ function renderSessionReview(entry){
   }
   const sec=el(`<section class="card"><h2>הטעויות שלך (${wrong.length})</h2><p class="muted" style="margin:2px 0 10px">לחצי על שאלה כדי לראות מה בחרת, התשובה הנכונה, ההסבר והמקור.</p><div id="rv"></div></section>`);
   const rvEl=sec.querySelector('#rv');
+  const _miss=(typeof entry.correct==='number'&&typeof entry.total==='number')?(entry.total-entry.correct):wrong.length;
+  if(_miss>wrong.length) rvEl.appendChild(el(`<div class="tipbox" style="margin-bottom:10px"><div class="muted" style="font-size:.85rem">מוצגות ${wrong.length} מתוך ${_miss} הטעויות — יתר הפירוט לא נשמר (תרגול זה שוחזר לפני עדכון).</div></div>`));
   wrong.forEach((w,n)=>{const q=w.q; const chosen=(w.oi!=null&&q.options[w.oi]!=null)?q.options[w.oi]:'— ללא מענה —';
     rvEl.appendChild(el(`<details class="mrow">
       <summary><span class="mx">✗</span><span>${n+1}. ${esc(q.q)}</span></summary>
@@ -19258,16 +19287,36 @@ const APPROACHES = [
 function renderApproaches(){
   const node=el('<div class="stack"></div>');
   const domOrder=['concept','general','physical','cognitive','peds','mental','tools'];
+  const COL={concept:'#f39c12',general:'#6c5ce7',physical:'#e17055',cognitive:'#0984e3',peds:'#00b894',mental:'#d63384',tools:'#00838f'};
   node.appendChild(el(`<section class="card"><h1>🧭 גישות ומודלים</h1>
-    <p class="muted" style="margin:6px 0 12px">מדריך המודלים והגישות — כולל טבלאות השוואה "חובה למבחן" ומיפוי כלי הערכה לפי מודל/גישה. חיפוש וסינון לפי תחום.</p>
+    <p class="muted" style="margin:6px 0 12px">מדריך המודלים והגישות — טבלאות השוואה "חובה למבחן" ומיפוי כלי הערכה לפי מודל/גישה. חיפוש וסינון לפי תחום.</p>
     <input class="search" id="as" placeholder="חיפוש: מודל, גישה, מושג או כלי הערכה…" aria-label="חיפוש בגישות ומודלים">
     <div class="appr-chips" id="ach"></div>
     <div class="faint" id="acount" style="font-size:.8rem;margin-top:10px"></div></section>`));
-  const cmp=el(`<details class="gacc" open><summary>⚖️ טבלאות השוואה — חובה למבחן</summary><div class="gacc-body cmp-tables">${APPR_COMPARE}</div></details>`);
-  node.appendChild(cmp);
+  node.appendChild(el(`<details class="gacc" open><summary>⚖️ טבלאות השוואה — חובה למבחן</summary><div class="gacc-body cmp-tables">${APPR_COMPARE}</div></details>`));
   const cont=el('<div id="acards"></div>'); node.appendChild(cont);
   const search=node.querySelector('#as'), chipsWrap=node.querySelector('#ach'), cnt=node.querySelector('#acount');
   let dom='all';
+  function openCard(a){
+    const col=COL[a.d]||'var(--primary)';
+    const badges=(a.badges||[]).map(b=>`<span class="appr-badge">${esc(b)}</span>`).join('');
+    const key=a.key?`<div class="appr-key">🔑 ${esc(a.key)}</div>`:'';
+    const domL=(APPR_DOMAINS[a.d]&&APPR_DOMAINS[a.d].label)||a.d;
+    const ov=el(`<div class="appr-modal"><div class="appr-modal-box" style="--acc:${col}">
+      <div style="display:flex;align-items:flex-start;gap:10px">
+        <div style="flex:1;min-width:0"><span style="font-size:.74rem;font-weight:800;color:${col}">${esc(domL)}</span>
+        <h2 style="margin:2px 0">${esc(a.name)}</h2>${a.sub?`<div class="faint" style="font-size:.85rem">${esc(a.sub)}</div>`:''}</div>
+        <button class="btn ghost" id="amClose" style="padding:6px 12px;flex:none" aria-label="סגירה">✕</button></div>
+      ${badges?`<div style="margin-top:10px">${badges}</div>`:''}
+      <div class="appr-body" style="margin-top:12px">${a.html}${key}</div>
+    </div></div>`);
+    const close=()=>{ov.remove(); document.removeEventListener('keydown',onEsc);};
+    const onEsc=(e)=>{if(e.key==='Escape')close();};
+    ov.onclick=(e)=>{if(e.target===ov)close();};
+    ov.querySelector('#amClose').onclick=close;
+    document.addEventListener('keydown',onEsc);
+    document.body.appendChild(ov);
+  }
   function draw(){
     chipsWrap.innerHTML='';
     const mk=(k,l)=>{const c=el(`<button class="appr-chip ${dom===k?'on':''}">${l}</button>`); c.onclick=()=>{dom=k;draw();}; return c;};
@@ -19279,14 +19328,17 @@ function renderApproaches(){
       if(dom!=='all' && dom!==d) return;
       const items=APPROACHES.filter(a=>a.d===d && (!term || (a.name+' '+(a.sub||'')+' '+a.html+' '+(a.key||'')).toLowerCase().includes(term)));
       if(!items.length) return;
-      cont.appendChild(el(`<div class="gsub" style="margin-top:16px">${esc((APPR_DOMAINS[d]&&APPR_DOMAINS[d].label)||d)} · ${items.length}</div>`));
+      const col=COL[d]||'var(--primary)';
+      cont.appendChild(el(`<div class="gsub" style="margin-top:18px;color:${col};background:color-mix(in srgb,${col} 14%,var(--surface))">${esc((APPR_DOMAINS[d]&&APPR_DOMAINS[d].label)||d)} · ${items.length}</div>`));
+      const grid=el('<div class="appr-grid"></div>');
       items.forEach(a=>{
         shown++;
         const badges=(a.badges||[]).map(b=>`<span class="appr-badge">${esc(b)}</span>`).join('');
-        const key=a.key?`<div class="appr-key">🔑 ${esc(a.key)}</div>`:'';
-        const sub=a.sub?`<div class="faint" style="margin-bottom:8px">${esc(a.sub)}</div>`:'';
-        cont.appendChild(el(`<details class="gacc"><summary>${esc(a.name)}${badges}</summary><div class="gacc-body appr-body">${sub}${a.html}${key}</div></details>`));
+        const card=el(`<button class="appr-card" style="--acc:${col}"><span class="an">${esc(a.name)}</span>${a.sub?`<span class="as">${esc(a.sub)}</span>`:''}${badges?`<span class="ab">${badges}</span>`:''}</button>`);
+        card.onclick=()=>openCard(a);
+        grid.appendChild(card);
       });
+      cont.appendChild(grid);
     });
     cnt.textContent=(term||dom!=='all')?`${shown} תוצאות`:`${APPROACHES.length} מודלים וגישות · 3 טבלאות השוואה — לחצי על כרטיס לפתיחה`;
     if(!shown) cont.appendChild(el('<p class="muted" style="text-align:center;padding:20px">🔍 לא נמצאו תוצאות — נסי חיפוש או תחום אחר.</p>'));
