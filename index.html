@@ -291,6 +291,16 @@ h1{letter-spacing:-.02em} h2{letter-spacing:-.01em}
             width:var(--sbw); background:var(--surface); border-left:1px solid var(--border);
             padding:16px 12px; z-index:45; overflow-y:auto; }
   main{ max-width:none; margin:0; margin-right:var(--sbw); padding:26px 34px 56px; }
+  #sidebar, main{ transition:width .22s var(--ease), margin .22s var(--ease); }
+  :root[data-sb="collapsed"]{ --sbw:66px; }
+  html[data-sb="collapsed"] .sb-brand{ justify-content:center; padding:4px 0 12px; }
+  html[data-sb="collapsed"] .sb-brand > span:not(.mark){ display:none; }
+  html[data-sb="collapsed"] .sbtn{ position:relative; font-size:0; justify-content:center; padding-inline:0; gap:0; }
+  html[data-sb="collapsed"] .sbtn .si{ font-size:1.2rem; width:auto; }
+  html[data-sb="collapsed"] .sbtn .dot{ position:absolute; margin:0; top:7px; inset-inline-end:13px; }
+  html[data-sb="collapsed"] .sb-foot{ flex-direction:column; align-items:center; gap:6px; }
+  .sb-toggle{ color:var(--muted) !important; }
+  .sb-toggle:hover{ color:var(--text) !important; }
   #screen{ max-width:1600px; margin:0 auto; }
   .home-top{ grid-template-columns:1.55fr 1fr; align-items:start; }
   .tiles { grid-template-columns: repeat(3, 1fr); }
@@ -531,6 +541,7 @@ html[data-contrast="high"] :focus-visible{outline-width:4px;outline-offset:2px}
 <aside id="sidebar" aria-label="ניווט ראשי">
   <div class="sb-brand"><span class="mark" aria-hidden="true">✚</span><span>סימולטור רישוי<small>ריפוי בעיסוק</small></span></div>
   <nav class="sb-nav">
+    <button class="sbtn sb-toggle" id="sbToggle" aria-label="כיווץ הסרגל"><span class="si" id="sbTglIcon" aria-hidden="true">⟨</span>כווץ</button>
     <button class="sbtn" data-snav="home"><span class="si" aria-hidden="true">⌂</span>בית</button>
     <button class="sbtn" data-snav="topics"><span class="si" aria-hidden="true">▤</span>תרגול לפי נושא</button>
     <button class="sbtn" data-snav="exam"><span class="si" aria-hidden="true">◷</span>מבחן מלא</button>
@@ -17500,6 +17511,10 @@ TABNAV.querySelector('[data-nav="glossary"]').onclick=()=>renderGlossary();
   const st=document.getElementById('sbTheme'), ss=document.getElementById('sbSettings');
   if(st)st.onclick=()=>document.getElementById('themeBtn').click();
   if(ss)ss.onclick=()=>document.getElementById('settingsBtn').click();
+  const _tgl=document.getElementById('sbToggle');
+  function applySb(){ const c=!!STATE.sbCollapsed; document.documentElement.setAttribute('data-sb', c?'collapsed':'expanded'); const ic=document.getElementById('sbTglIcon'); if(ic)ic.textContent=c?'☰':'⟨'; if(_tgl)_tgl.setAttribute('aria-label', c?'הרחבת הסרגל':'כיווץ הסרגל'); }
+  if(_tgl)_tgl.onclick=()=>{ STATE.sbCollapsed=!STATE.sbCollapsed; saveState(STATE); applySb(); };
+  applySb();
 })();
 /* clicking the logo / brand returns to the home screen, like a normal website */
 (function(){
