@@ -2407,19 +2407,19 @@ html[data-contrast="high"] :focus-visible{outline-width:4px;outline-offset:2px}
   "cluster": 7,
   "q": "מהי 'סגירוּת חזותית' (Visual closure)?",
   "options": [
-   "היכולת לזהות אובייקט שלם מתוך מידע חזותי חלקי/חסר",
-   "הבחנה בין דמות לרקע (figure-ground)",
-   "קביעוּת הצורה (form constancy) בזוויות שונות",
-   "תפיסת יחסים מרחביים בין אובייקטים"
+   "היכולת לזהות אובייקט שלם מתוך מידע חזותי חלקי או חסר",
+   "תפיסת היחסים המרחביים בין אובייקטים במרחב",
+   "היכולת להבחין בין דמות מרכזית לבין הרקע שסביבה",
+   "זיהוי צורה כקבועה גם כשהיא מוצגת בגודל, בכיוון או בזווית שונים"
   ],
   "answer": 0,
   "opt_why": [
-   "✓ נכון. סגירוּת חזותית היא היכולת לזהות אובייקט שלם מתוך מידע חזותי חלקי או חסר.",
-   "הבחנה בין דמות לרקע היא figure-ground, מיומנות נפרדת; מסיח קרוב כי שתיהן תפיסה חזותית.",
-   "קביעוּת הצורה עוסקת בזיהוי אותו אובייקט בזוויות ובגדלים שונים.",
-   "תפיסת יחסים מרחביים עוסקת במיקום היחסי בין אובייקטים."
+   "✓ נכון. סגירוּת חזותית (Visual closure) היא היכולת להשלים ולזהות אובייקט שלם על סמך מידע חזותי חלקי או חסר.",
+   "תיאור של תפיסת יחסים מרחביים (spatial relations) — מיקום אובייקטים זה ביחס לזה ולגוף, לא סגירוּת חזותית.",
+   "תיאור של הבחנת דמות-רקע (figure-ground) — הפרדת אובייקט רלוונטי מרקע עמוס, לא סגירוּת חזותית.",
+   "תיאור של קביעוּת הצורה (form constancy) — זיהוי אובייקט כאותו אובייקט למרות שינוי בגודל/זווית, לא סגירוּת חזותית."
   ],
-  "explanation": "סגירות חזותית היא היכולת לזהות ולהשלים אובייקט או מילה גם כשחלק מהמידע החזותי חסר. היא חשובה לקריאה מהירה ולזיהוי אותיות/מילים, וקושי בה משפיע על שטף הקריאה.",
+  "explanation": "סגירוּת חזותית (Visual closure) = היכולת לזהות ולהשלים אובייקט שלם מתוך מידע חלקי או חסר (למשל לזהות חפץ שרואים ממנו רק חלק). האפשרויות האחרות מתארות מיומנויות תפיסה חזותית אחרות: יחסים מרחביים, הבחנת דמות-רקע וקביעוּת הצורה.",
   "source": "תפיסה חזותית — Visual closure · Case-Smith"
  },
  {
@@ -18285,8 +18285,9 @@ function startExam(items){
     const score=Math.round(correct/items.length*100);
     const wrongLog=wrong.map(w=>({id:w.rq.ref.id, oi: w.chosen!=null? w.rq.opts[w.chosen].oi : null}));
     wrong.forEach(w=>{const _s=STATE.srs[w.rq.ref.id]; if(_s)_s.miss={title:'מבחן מלא',t:Date.now()};});
-    STATE.history.push({t:Date.now(),mode:'exam',score,correct,total:items.length,ms:elapsed,wrong:wrongLog}); saveState(STATE);
-    showResults({score,correct,total:items.length,elapsed,perCluster,wrong,fmt});
+    const allLog=items.map((rq,k)=>({id:rq.ref.id, oi: ans[k]!=null? rq.opts[ans[k]].oi : null}));
+    STATE.history.push({t:Date.now(),mode:'exam',score,correct,total:items.length,ms:elapsed,wrong:wrongLog,all:allLog}); saveState(STATE);
+    showResults({score,correct,total:items.length,elapsed,perCluster,wrong,fmt,all:allLog});
   }
   render();
 }
@@ -18449,6 +18450,42 @@ function renderCustomExam(){
 
 /* ===================== RESULTS ===================== */
 /* review the specific mistakes of ONE past session (from a home-history row) — read-only */
+/* one collapsible read-only row for a reviewed exam question (correct or wrong) */
+function examReviewRow(item,n){
+  const q=BANK.find(x=>x.id===item.id); if(!q) return null;
+  const oi=item.oi;
+  const isC = oi===q.answer;
+  const chosen=(oi!=null&&q.options[oi]!=null)?q.options[oi]:'— ללא מענה —';
+  return el(`<details class="mrow">
+    <summary><span class="mx" style="color:var(--${isC?'ok':'bad'})">${isC?'✓':'✗'}</span><span>${n}. ${esc(q.q)}</span></summary>
+    <div class="mbody">
+      <div class="qmeta">אשכול ${q.cluster}</div>
+      <div>בחרת: <b${isC?' style="color:var(--ok)"':''}>${esc(chosen)}</b></div>
+      ${isC?'':`<div>נכון: <b style="color:var(--ok)">${esc(q.options[q.answer])}</b></div>`}
+      <div style="margin-top:4px">${linkExpl(q.explanation)}</div>
+      ${q.source?`<div class="src"><span>📄</span><span>${esc(q.source)}</span></div>`:''}
+    </div></details>`);
+}
+/* full read-only walk over ALL exam questions (incl. correct), with a re-practice-all option */
+function renderExamReview(entry, back){
+  back=back||renderHome;
+  const all=entry.all||[];
+  const node=el('<div class="stack"></div>');
+  const head=el(`<section class="card">
+    <div class="qtop"><button class="btn ghost" id="bk">→ חזרה</button><span class="sp" style="flex:1"></span><span class="chip teal">מעבר על המבחן</span></div>
+    <h1 style="margin-top:12px">מעבר על כל שאלות המבחן</h1>
+    <p class="muted" style="margin:6px 0 0">כל ${all.length} השאלות — כולל אלה שענית נכון. לחצי על שאלה לפתיחת התשובה, ההסבר והמקור. ✓ נכון · ✗ שגוי.</p></section>`);
+  head.querySelector('#bk').onclick=back; node.appendChild(head);
+  if(!all.length){ node.appendChild(el('<section class="card"><p class="muted" style="margin:0">אין פירוט שאלות למבחן זה (נשמר לפני העדכון).</p></section>')); return setScreen(node,'home'); }
+  const sec=el('<section class="card"><div id="rv"></div></section>');
+  const rvEl=sec.querySelector('#rv');
+  all.forEach((it,n)=>{const row=examReviewRow(it,n+1); if(row)rvEl.appendChild(row);});
+  node.appendChild(sec);
+  const pr=el(`<button class="btn wide" style="margin-top:2px">🔁 תרגל מחדש את כל ${all.length} השאלות</button>`);
+  pr.onclick=()=>{ const qs=all.map(it=>BANK.find(x=>x.id===it.id)).filter(Boolean); if(qs.length) runPractice(qs,'חזרה על מבחן מלא',{mixed:true}); };
+  node.appendChild(pr);
+  setScreen(node,'home');
+}
 function renderSessionReview(entry){
   const d=new Date(entry.t);
   const title=entry.mode==='exam'?'מבחן מלא':(entry.title||'תרגול');
@@ -18458,6 +18495,7 @@ function renderSessionReview(entry){
     <h1 style="margin-top:12px">${esc(title)}</h1>
     <p class="muted" style="margin:6px 0 0">${d.toLocaleDateString('he-IL')} ${d.toLocaleTimeString('he-IL',{hour:'2-digit',minute:'2-digit'})} · ציון ${entry.score}% · ${entry.correct}/${entry.total}</p></section>`);
   head.querySelector('#bk').onclick=renderHome; node.appendChild(head);
+  if(entry.all&&entry.all.length){ const _rb=el('<button class="btn secondary wide" style="margin-bottom:2px">📖 מעבר על כל שאלות המבחן</button>'); _rb.onclick=()=>renderExamReview(entry, ()=>renderSessionReview(entry)); node.appendChild(_rb); }
   if(!('wrong' in entry)){
     node.appendChild(el('<div class="card"><div class="tipbox"><b>אין פירוט טעויות למבחן זה</b><div class="muted" style="font-size:.9rem">המבחן נשמר לפני עדכון סקירת הטעויות. במבחנים חדשים יישמרו הטעויות המדויקות ותוכלי לפתוח אותן מכאן.</div></div></div>'));
     return setScreen(node,'home');
@@ -18537,6 +18575,7 @@ function showResults(r){
   const tabs=el(`<div class="restabs">
     <button class="tab active" data-tab="analysis">📊 ניתוח</button>
     <button class="tab" data-tab="mistakes">✗ סקירת טעויות${wrongN?` (${wrongN})`:''}</button>
+    <button class="tab" data-tab="all">📖 מעבר על המבחן</button>
   </div>`);
   node.appendChild(tabs);
 
@@ -18579,6 +18618,15 @@ function showResults(r){
     mp.appendChild(el(`<section class="card"><div class="tipbox good"><b>אין טעויות — כל הכבוד! 🎉</b><div class="muted" style="font-size:.9rem">כל התשובות נכונות.</div></div></section>`));
   }
   node.appendChild(mp);
+
+  /* full review panel — every question incl. correct ones */
+  const ap=el(`<div class="respanel" data-panel="all" hidden></div>`);
+  const apCard=el(`<section class="card"><h2>מעבר על כל השאלות (${r.total})</h2><p class="muted" style="margin:2px 0 10px">כולל אלה שענית נכון — לחצי על שאלה לפתיחת התשובה וההסבר. ✓ נכון · ✗ שגוי.</p><div id="apw"></div></section>`);
+  const apEl=apCard.querySelector('#apw');
+  (r.all||[]).forEach((it,n)=>{const row=examReviewRow(it,n+1); if(row)apEl.appendChild(row);});
+  const reAll=el(`<button class="btn wide" style="margin-top:6px">🔁 תרגל מחדש את כל ${r.total} השאלות</button>`);
+  reAll.onclick=()=>{ const qs=(r.all||[]).map(it=>BANK.find(x=>x.id===it.id)).filter(Boolean); if(qs.length) runPractice(qs,'חזרה על מבחן מלא',{mixed:true}); };
+  apCard.appendChild(reAll); ap.appendChild(apCard); node.appendChild(ap);
 
   tabs.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{
     tabs.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x===b));
