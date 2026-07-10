@@ -364,7 +364,7 @@ details.gacc[open]>summary{border-bottom:1px solid var(--border)}
 .cmp-tables th,.cmp-tables td{border:1px solid var(--border);padding:7px 9px;text-align:start;vertical-align:top}
 .cmp-tables th{background:var(--surface-2);font-weight:800;color:var(--primary-d)}
 .cmp-tables h4{margin:14px 0 4px;color:var(--text)}
-.appr-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px;margin-top:8px}
+.appr-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:8px}
 .appr-card{position:relative;text-align:start;width:100%;font-family:inherit;color:var(--text);background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:15px 17px 15px 20px;cursor:pointer;box-shadow:var(--shadow-s);transition:transform .12s var(--ease),box-shadow .16s var(--ease),border-color .16s;overflow:hidden;display:flex;flex-direction:column;gap:3px}
 .appr-card:hover{transform:translateY(-2px);box-shadow:var(--shadow);border-color:var(--acc)}
 .appr-card::before{content:"";position:absolute;inset-inline-start:0;top:0;bottom:0;width:5px;background:var(--acc)}
@@ -2387,19 +2387,19 @@ html[data-contrast="high"] :focus-visible{outline-width:4px;outline-offset:2px}
   "cluster": 7,
   "q": "מהו עיקרון מנחה בבחירת התאמות (Accommodations) לתלמיד עם דיסגרפיה בכיתה?",
   "options": [
-   "להגביר משמעותית את כמות תרגול הכתיבה היומי כדי לחזק בכוח את המיומנות הגרפו-מוטורית",
-   "לאפשר אמצעים חלופיים (מקלדת, זמן מוארך, הקלטה) המפחיתים את העומס הגרפו-מוטורי תוך שמירה על השתתפות והבעת ידע",
-   "להעריך את התלמיד לפי קריאוּת כתב היד, ללא התחשבות בתוכן הידע שהוא מציג",
+   "להעדיף שיקום המיומנות הגרפו-מוטורית על פני מתן התאמות, כדי שהתלמיד לא יפתח תלות באמצעי עזר",
+   "לאפשר אמצעים חלופיים המפחיתים את העומס הגרפו-מוטורי, תוך שמירה על השתתפות והבעת ידע",
+   "להעריך את התלמיד לפי קריאוּת כתב ידו, ללא התחשבות בתוכן הידע שהוא מציג",
    "לדרוש השלמת כל המטלות בכתב יד וללא אמצעי עזר, כדי לעמוד בסטנדרט הכיתתי האחיד"
   ],
   "answer": 1,
   "opt_why": [
-   "הגברת עומס הכתיבה אינה התאמה — היא מעצימה את הקושי הגרפו-מוטורי במקום לעקוף אותו.",
-   "✓ נכון. אמצעים חלופיים (מקלדת, זמן מוארך, הקלטה) מפחיתים את העומס הגרפו-מוטורי תוך שמירה על השתתפות והבעת ידע.",
-   "הערכה לפי קריאוּת בלבד מענישה על הליקוי עצמו ומסתירה את הידע — היפוך מטרת ההתאמה.",
-   "דרישה לכתב יד ללא עזרים משמרת את המחסום הגרפו-מוטורי במקום לאפשר הבעת ידע."
+   "מסיח קרוב: הטענה על 'מניעת תלות' נשמעת הגיונית, אך מטרת ההתאמות היא לאפשר השתתפות והבעת ידע חרף הקושי — אין לעכב או למנוע אותן לטובת שיקום בלבד.",
+   "✓ נכון. עיקרון ההתאמות (Accommodations) הוא לאפשר לתלמיד לבטא ידע ולהשתתף חרף הקושי הגרפו-מוטורי — באמצעים חלופיים (מקלדת, זמן מוארך, הקלטה) המפחיתים את העומס, בלי לבטל את הלמידה עצמה.",
+   "הערכה לפי קריאוּת כתב היד מענישה על הליקוי עצמו ופוגעת בהבעת הידע — מנוגד לעקרון ההתאמות.",
+   "דרישת כתב יד בלבד ללא אמצעי עזר מגבירה את העומס הגרפו-מוטורי ומונעת מהתלמיד לבטא ידע — מנוגד לעקרון."
   ],
-  "explanation": "מטרת ההתאמות היא לאפשר לתלמיד להביע ידע ולהשתתף בלמידה למרות הקושי הגרפו-מוטורי — באמצעות מקלדת, זמן מוארך, הפחתת כמות העתקה וכד' — בלי לבטל את הלמידה עצמה.",
+  "explanation": "עיקרון ההתאמות (Accommodations) לתלמיד עם דיסגרפיה: לאפשר לו לבטא ידע ולהשתתף למרות הקושי הגרפו-מוטורי, באמצעות אמצעים חלופיים (מקלדת, זמן מוארך, הקלטה, הפחתת כמות העתקה) — בלי לבטל את הלמידה עצמה. אין להתנות התאמות בשיקום מוקדם, להעניש על קריאוּת כתב היד או לכפות כתב יד בלבד.",
   "source": "התאמות לימודיות בלקויות למידה · Case-Smith"
  },
  {
@@ -2588,10 +2588,10 @@ html[data-contrast="high"] :focus-visible{outline-width:4px;outline-offset:2px}
   "cluster": 8,
   "q": "מהי משמעות מערכת ה-GMFCS בילדים עם CP?",
   "options": [
-   "סולם לסיווג תפקוד הידיים (MACS)",
-   "סולם לסיווג תפקוד מוטורי גס (ניידות) בחמש רמות",
-   "סולם לסיווג יכולת התקשורת (CFCS)",
-   "מדד לדירוג חומרת הספסטיות (Ashworth)"
+   "סולם לסיווג תפקוד הידיים",
+   "סולם לסיווג תפקוד מוטורי גס (ניידות)",
+   "סולם לסיווג יכולת התקשורת",
+   "מדד לדירוג חומרת הספסטיות"
   ],
   "answer": 1,
   "opt_why": [
@@ -4624,7 +4624,7 @@ html[data-contrast="high"] :focus-visible{outline-width:4px;outline-offset:2px}
    "Low-tech — אמצעים פשוטים ולא-אלקטרוניים; High-tech — אמצעים אלקטרוניים/ממוחשבים",
    "ההבחנה היא לפי מורכבות ההדרכה: High-tech דורש הדרכה קצרה ופשוטה יותר מ-Low-tech",
    "High-tech מתאים לכל המשתמשים ומספק תמיד תוצאות תפקודיות טובות יותר מ-Low-tech",
-   "ההבחנה בין low ל-high tech נקבעת לפי עלות העזר, ולא לפי מורכבותו הטכנולוגית"
+   "ההבחנה בין Low-tech ל-High-tech נקבעת לפי עלות העזר, ולא לפי מורכבותו הטכנולוגית"
   ],
   "answer": 0,
   "opt_why": [
@@ -8045,14 +8045,14 @@ html[data-contrast="high"] :focus-visible{outline-width:4px;outline-offset:2px}
   "options": [
    "Micrographia",
    "Lead pipe rigidity",
-   "אפזיה",
+   "Aphasia",
    "Hypomimia"
   ],
   "answer": 2,
   "opt_why": [
    "Micrographia (כתב יד הולך וקטן) הוא סימפטום אופייני לפרקינסון.",
    "Lead pipe rigidity היא קשיחות אחידה האופיינית לפרקינסון.",
-   "✓ נכון. אפזיה היא הפרעת שפה הנובעת מפגיעה מוחית מוקדית (כמו בשבץ) ואינה סימפטום אופייני לפרקינסון.",
+   "✓ נכון. Aphasia (אפזיה) היא הפרעת שפה הנובעת מפגיעה מוחית מוקדית (כמו בשבץ) ואינה סימפטום אופייני לפרקינסון.",
    "Hypomimia (פני מסכה, דלות הבעות פנים) היא סימפטום מוטורי אופייני לפרקינסון."
   ],
   "explanation": "פרקינסון מאופיין בתסמינים מוטוריים: רעד, קשיחות (lead pipe rigidity), ברדיקינזיה, micrographia ו-hypomimia. אפזיה היא הפרעת שפה הקשורה לפגיעה מוחית מוקדית ואינה חלק מהתמונה הקלינית של פרקינסון.",
@@ -9905,7 +9905,7 @@ html[data-contrast="high"] :focus-visible{outline-width:4px;outline-offset:2px}
   "q": "שירה נפגעה בשריר הדלטואיד (סיבים קדמיים) ומוגבלת בטווח התנועה. איזו פעולה סביר שלא תוכל לבצע?",
   "options": [
    "סגירת חזייה מאחורי הגב",
-   "הורדת כוס ממדף בגובה הכתף (flexion קדמי)",
+   "הורדת כוס ממדף בגובה הכתף",
    "רכיסת כפתור במכנסיים",
    "ענידת עגילים"
   ],
@@ -10005,8 +10005,8 @@ html[data-contrast="high"] :focus-visible{outline-width:4px;outline-offset:2px}
   "q": "\"רכישה והוצאה לפועל של מיומנויות מוטוריות נמוכה באופן ניכר מהמצופה לגיל ולהזדמנויות להתנסות\". לאיזו אבחנה מתאים התיאור?",
   "options": [
    "DCD",
-   "ID (מוגבלות שכלית התפתחותית)",
-   "Cerebral Palsy",
+   "ID",
+   "CP",
    "ASD"
   ],
   "answer": 0,
@@ -13702,7 +13702,7 @@ html[data-contrast="high"] :focus-visible{outline-width:4px;outline-offset:2px}
  {
   "id": "w20-27",
   "cluster": 16,
-  "q": "בנוסף הומלץ להתאים לחיים מחבט גולף קל-משקל ולעבות את ידית האחיזה. איזה סוג התאמה זו?",
+  "q": "חיים, שחקן גולף מקצועי עם אפיקונדיליטיס מדיאלי (golfer's elbow), קיבל המלצה להתאים מחבט גולף קל-משקל ולעבות את ידית האחיזה — כדי להפחית את העומס על המרפק. איזה סוג התאמה זו?",
   "options": [
    "הנדסית",
    "מנהלית",
@@ -13711,12 +13711,12 @@ html[data-contrast="high"] :focus-visible{outline-width:4px;outline-offset:2px}
   ],
   "answer": 0,
   "opt_why": [
-   "✓ נכון. שינוי מאפייני הכלי עצמו - הקטנת משקלו ועיבוי ידית האחיזה - הוא התאמה הנדסית של הציוד/הסביבה הפיזית למשתמש.",
-   "התאמה מנהלית עוסקת בשינוי נהלים, שעות ותורנויות ולא בשינוי הכלי הפיזי, ולכן אינה מתאימה.",
-   "ה'אישית' אינה קטגוריה מקובלת בסיווג התאמות ארגונומיות והיא מסיחה כללית.",
-   "התאמה התנהגותית מתמקדת בשינוי דרך הביצוע של האדם ולא בשינוי תכונות הכלי, ולכן אינה מדויקת."
+   "✓ נכון. שינוי פיזי של הציוד עצמו (מחבט קל-משקל, ידית מעובה) להפחתת העומס המכני על המרפק = התאמה הנדסית.",
+   "התאמה מנהלית עוסקת בשינוי נהלים, לוחות זמנים או ארגון — לא בשינוי הכלי עצמו.",
+   "התאמה אישית מכוונת לאדם עצמו (הדרכה, תרגול, ציוד מגן אישי), לא לשינוי הציוד.",
+   "התאמה התנהגותית משנה את אופן/דרך הביצוע של הפעולה, לא את מאפייני הכלי."
   ],
-  "explanation": "שינוי המאפיינים הפיזיים של הכלי - משקל קל יותר וידית מעובה - מהווה התאמה הנדסית (engineering control), הרמה המועדפת בהיררכיית הבקרה משום שהיא משנה את הסיכון במקור. התאמה מנהלית לעומתה משנה נהלים ושעות עבודה.",
+  "explanation": "התאמה הנדסית (Engineering) = שינוי פיזי של הכלי או הציוד עצמו. כאן, מחבט גולף קל-משקל וידית מעובה מפחיתים את העומס המכני על המרפק הפגוע (אפיקונדיליטיס מדיאלי). מנהלית = שינוי נהלים/ארגון; אישית = התייחסות לאדם עצמו; התנהגותית = שינוי דרך הביצוע.",
   "source": "שחזור 2020 · שאלה 27"
  },
  {
@@ -19314,7 +19314,7 @@ function renderApproaches(){
     <input class="search" id="as" placeholder="חיפוש: מודל, גישה, מושג או כלי הערכה…" aria-label="חיפוש בגישות ומודלים">
     <div class="appr-chips" id="ach"></div>
     <div class="faint" id="acount" style="font-size:.8rem;margin-top:10px"></div></section>`));
-  node.appendChild(el(`<details class="gacc" open><summary>⚖️ טבלאות השוואה — חובה למבחן</summary><div class="gacc-body cmp-tables">${APPR_COMPARE}</div></details>`));
+  node.appendChild(el(`<details class="gacc"><summary>⚖️ טבלאות השוואה — חובה למבחן</summary><div class="gacc-body cmp-tables">${APPR_COMPARE}</div></details>`));
   const cont=el('<div id="acards"></div>'); node.appendChild(cont);
   const search=node.querySelector('#as'), chipsWrap=node.querySelector('#ach'), cnt=node.querySelector('#acount');
   let dom='all';
