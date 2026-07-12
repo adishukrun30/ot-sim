@@ -1,6 +1,6 @@
 ﻿/* Service worker — offline cache for the OT licensing simulator.
    Bump CACHE on each content update so phones fetch the new version. */
-const CACHE = 'ot-sim-v89';
+const CACHE = 'ot-sim-v92';
 const ASSETS = [
   './',
   './index.html',
